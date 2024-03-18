@@ -1,0 +1,15 @@
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.AssemblyInfoInputs.cache
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.AssemblyInfo.cs
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.csproj.CoreCompileInputs.cache
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.sourcelink.json
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\bin\Debug\net8.0\project-B-DataWizards.exe
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\bin\Debug\net8.0\project-B-DataWizards.deps.json
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\bin\Debug\net8.0\project-B-DataWizards.runtimeconfig.json
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\bin\Debug\net8.0\project-B-DataWizards.dll
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\bin\Debug\net8.0\project-B-DataWizards.pdb
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.dll
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\refint\project-B-DataWizards.dll
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.pdb
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\project-B-DataWizards.genruntimeconfig.cache
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\MiniProjectSCRUM\project-B-DataWizards\obj\Debug\net8.0\ref\project-B-DataWizards.dll
