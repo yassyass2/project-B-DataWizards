@@ -22,11 +22,12 @@ class Program
             string? choice = Console.ReadLine();
             if (choice == "reserve")
             {
-                Reservation.ReservationDetails()
+                Reservation.Info()
             }
+
             else if (choice == "menu")
             {
-                //Reservation.Menu()
+
             }
         }
     }
