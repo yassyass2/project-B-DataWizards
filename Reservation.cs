@@ -7,5 +7,10 @@ class Reservation
 
     public void ChangeDate(string newdate) => _date = newdate;
     public void ChangePeople(int AmountOfPeople) => _people = AmountOfPeople;
+    public void ReservationDetails()
+    {
+        Console.WriteLine("Your reservation:");
+        Console.WriteLine($"For {_people} on {_date}");
+    }
 
 }

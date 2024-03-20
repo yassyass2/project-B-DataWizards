@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\MiniProjectSCRUM\\project-B-DataWizards\\project-B-DataWizards.csproj",
+      "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
       "projectName": "project-B-DataWizards",
-      "projectPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\MiniProjectSCRUM\\project-B-DataWizards\\project-B-DataWizards.csproj",
+      "projectPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
       "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\MiniProjectSCRUM\\project-B-DataWizards\\obj\\",
+      "outputPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
