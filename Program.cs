@@ -27,10 +27,10 @@ class Program
 (Q) Programma afsluiten
             ");
             string? choice = Console.ReadLine().ToUpper();
-            Reservation reservation = new Reservation();
+            Reservation reservation = new Reservation(people, date);
             if (choice == "R")
             {
-                // Reservingsfuntcie 
+                reservation.Reserve();
             }
 
             else if (choice == "M")
@@ -39,7 +39,7 @@ class Program
             }
             else if (choice == "Z")
             {
-                reservation.Info();
+                reservation.ReservationDetails();
             }
             else if (choice == "Q")
             {
