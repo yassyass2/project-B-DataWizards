@@ -2,28 +2,35 @@ class Reservation
 {
     private int _people;
     private string _date;
+    private string _location;
+    public static List<Reservation> Reservations = new();
 
-    public Reservation(int people, string date)
+    public Reservation(int people, string date, string location)
     {
         _people = people;
         _date = date;
+        _location = location;
     }
 
-    public void ReservationDetails() => Console.WriteLine($"Reservation on {_date} for {_people} people");
+    public void Details() => Console.WriteLine($"Reservation on {_date} for {_people} people at Ny place {_location}");
 
     public void ChangeDate(string newdate) => _date = newdate;
     public void ChangePeople(int AmountOfPeople) => _people = AmountOfPeople;
     public static Reservation Reserve()
     {
+        Console.WriteLine("Welke locatie? (Rotterdam/Roermond/Den haag)");
+        string location = Console.ReadLine();
         Console.WriteLine("Wat is uw naam? ");
-        string? ReserveringsNaam = Console.ReadLine();
+        string? Name = Console.ReadLine();
         Console.WriteLine("Wat is uw e-mail? ");
-        string? EMail = Console.ReadLine();
+        string? Email = Console.ReadLine();
         Console.WriteLine("Hoeveel personen? ");
         int people = int.Parse(Console.ReadLine());
         Console.WriteLine("Wanneer wilt u reserveren? (DD/MM/YYYY) ");
         string? date = Console.ReadLine();
-        return new Reservation(people, date);
-    }
 
+        Reservation Reservation = new(people, date, location);
+        Reservations.Add(Reservation);
+        return Reservation;
+    }
 }

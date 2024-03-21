@@ -1,7 +1,4 @@
-﻿using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Serialization;
-
+﻿
 class Program
 {
     public static void Main()
@@ -26,11 +23,13 @@ class Program
 (Z) Details reservering bekijken
 (Q) Programma afsluiten
             ");
-            string? choice = Console.ReadLine().ToUpper();
-            Reservation reservation = new Reservation(people, date);
+            Reservation reservation;
+            string choice = Console.ReadLine().ToUpper();
+
             if (choice == "R")
             {
-                reservation.Reserve();
+                reservation = Reservation.Reserve();
+                Console.WriteLine("reservering succesvol aangemaakt");
             }
 
             else if (choice == "M")
@@ -39,7 +38,11 @@ class Program
             }
             else if (choice == "Z")
             {
-                reservation.ReservationDetails();
+                foreach (Reservation res in Reservation.Reservations)
+                {
+                    res.Details();
+                }
+                // reserveringen bekijken
             }
             else if (choice == "Q")
             {
@@ -50,18 +53,18 @@ class Program
                     choice2 = Console.ReadLine().ToLower();
                     if (choice2 == "ja")
                     {
-                        System.Environment.Exit(1);
+                        Environment.Exit(1);
                     }
                     else if (choice != "nee")
                     {
-                        System.Console.WriteLine("Ongeldige invoer");
+                        Console.WriteLine("Ongeldige invoer");
 
                     }
                 } while (choice2 != "ja" && choice2 != "nee");
             }
             else
             {
-                System.Console.WriteLine("Ongeldige invoer");
+                Console.WriteLine("Ongeldige invoer");
             }
         }
     }
