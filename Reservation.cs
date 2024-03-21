@@ -3,14 +3,19 @@ class Reservation
     private int _people;
     private string _date;
 
-    public void Info() => Console.WriteLine($"Reservation on {_date} for {_people} people");
+    public Reservation(int people, string date)
+    {
+        _people = people;
+        _date = date;
+    }
+
+    public void ReservationDetails() => Console.WriteLine($"Reservation on {_date} for {_people} people");
 
     public void ChangeDate(string newdate) => _date = newdate;
     public void ChangePeople(int AmountOfPeople) => _people = AmountOfPeople;
-    public void ReservationDetails()
+    public static Reservation Reserve(int people, string date)
     {
-        Console.WriteLine("Your reservation:");
-        Console.WriteLine($"For {_people} on {_date}");
+        return new Reservation(people, date);
     }
 
 }
