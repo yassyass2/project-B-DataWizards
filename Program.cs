@@ -20,11 +20,11 @@ class Program
         {
             Console.WriteLine("Welkom bij NY Place");
             Console.WriteLine(
-            @"Wat wilt u doen?
-            (R) Reserveren
-            (M) Menu bekijken
-            (Z) Details reservering bekijken
-            (Q) Programma afsluiten
+@"Wat wilt u doen?
+(R) Reserveren
+(M) Menu bekijken
+(Z) Details reservering bekijken
+(Q) Programma afsluiten
             ");
             string? choice = Console.ReadLine().ToUpper();
             Reservation reservation = new Reservation();
@@ -35,7 +35,7 @@ class Program
 
             else if (choice == "M")
             {
-
+                // MenuBekijken
             }
             else if (choice == "Z")
             {
