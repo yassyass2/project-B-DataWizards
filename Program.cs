@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
 
 class Program
@@ -17,17 +18,50 @@ class Program
             ");
         while (true)
         {
-            Console.WriteLine("Welcome to NY Place");
-            Console.WriteLine("Do you want to reserve or see the menu?");
-            string? choice = Console.ReadLine();
-            if (choice == "reserve")
+            Console.WriteLine("Welkom bij NY Place");
+            Console.WriteLine(
+            @"Wat wilt u doen?
+            (R) Reserveren
+            (M) Menu bekijken
+            (Z) Details reservering bekijken
+            (Q) Programma afsluiten
+            ");
+            string? choice = Console.ReadLine().ToUpper();
+            Reservation reservation = new Reservation();
+            if (choice == "R")
             {
-                Reservation.Info()
+                // Reservingsfuntcie 
             }
 
-            else if (choice == "menu")
+            else if (choice == "M")
             {
 
+            }
+            else if (choice == "Z")
+            {
+                reservation.Info();
+            }
+            else if (choice == "Q")
+            {
+                string choice2;
+                do
+                {
+                    Console.WriteLine("Weet u het zeker? (ja/nee)");
+                    choice2 = Console.ReadLine().ToLower();
+                    if (choice2 == "ja")
+                    {
+                        System.Environment.Exit(1);
+                    }
+                    else if (choice != "nee")
+                    {
+                        System.Console.WriteLine("Ongeldige invoer");
+
+                    }
+                } while (choice2 != "ja" && choice2 != "nee");
+            }
+            else
+            {
+                System.Console.WriteLine("Ongeldige invoer");
             }
         }
     }
