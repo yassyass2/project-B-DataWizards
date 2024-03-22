@@ -12,7 +12,7 @@ class Reservation
         _location = location;
     }
 
-    public void Details() => Console.WriteLine($"Reservation on {_date} for {_people} people at Ny place {_location}");
+    public void Details() => Console.WriteLine($"\nReservation op {_date} voor {_people} mensen bij Ny place {_location}\n");
 
     public void ChangeDate(string newdate) => _date = newdate;
     public void ChangePeople(int AmountOfPeople) => _people = AmountOfPeople;
@@ -31,6 +31,8 @@ class Reservation
 
         Reservation Reservation = new(people, date, location);
         Reservations.Add(Reservation);
+
+        Console.WriteLine("reservering succesvol aangemaakt");
         return Reservation;
     }
 }
