@@ -58,8 +58,7 @@ class Program
                     }
                     else if (choice != "nee")
                     {
-                        Console.WriteLine("Ongeldige invoer");
-
+                        Console.WriteLine("\n");
                     }
                 } while (choice2 != "ja" && choice2 != "nee");
             }
