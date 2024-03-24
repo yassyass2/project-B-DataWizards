@@ -1,38 +1,57 @@
 class Reservation
 {
-    private int _people;
-    private string _date;
-    private string _location;
-    public static List<Reservation> Reservations = new();
+    private static Dictionary<string, string> _locations = new Dictionary<string, string>
+        {
+            { "1", "Rotterdam" },
+            { "2", "Roermond" },
+            { "3", "Den Haag" }
+        };
+    public string Location { get; set; }
+    public int NumberOfPeople { get; set; }
+    public DateTime Date { get; set; }
+    public string Email { get; set; }
 
-    public Reservation(int people, string date, string location)
+    public Reservation(string location, int numberOfPeople, DateTime date, string email)
     {
-        _people = people;
-        _date = date;
-        _location = location;
+        Location = location;
+        NumberOfPeople = numberOfPeople;
+        Date = date;
+        Email = email;
     }
 
-    public void Details() => Console.WriteLine($"\nReservering op {_date} voor {_people} mensen bij Ny place {_location}\n");
-
-    public void ChangeDate(string newdate) => _date = newdate;
-    public void ChangePeople(int AmountOfPeople) => _people = AmountOfPeople;
-    public static Reservation Reserve()
+    public void ChangeDate(DateTime newdate) => Date = newdate;
+    public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
+    public static void Reserve()
     {
-        Console.WriteLine("Welke locatie? (Rotterdam/Roermond/Den haag)");
-        string location = Console.ReadLine();
-        Console.WriteLine("Wat is uw naam? ");
-        string? Name = Console.ReadLine();
+        string location;
+        do
+        {
+            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)");
+            location = Console.ReadLine();
+        } while (!_locations.ContainsKey(location));
+
         Console.WriteLine("Wat is uw e-mail? ");
-        string? Email = Console.ReadLine();
-        Console.WriteLine("Hoeveel personen? ");
-        int people = int.Parse(Console.ReadLine());
-        Console.WriteLine("Wanneer wilt u reserveren? (DD/MM/YYYY) ");
-        string? date = Console.ReadLine();
+        string email = Console.ReadLine();
 
-        Reservation Reservation = new(people, date, location);
-        Reservations.Add(Reservation);
+        int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
 
-        Console.WriteLine("reservering succesvol aangemaakt");
-        return Reservation;
+        int month, day, year, hour, minute;
+
+        month = ReservationSystem.GetValidDate("Enter the month (1-12): ", 1, 12);
+
+        day = ReservationSystem.GetValidDate("Enter the day (1-31): ", 1, 31);
+
+        year = 2024;
+
+        hour = ReservationSystem.GetValidDate("Enter the hour (0-23): ", 0, 23);
+
+        minute = ReservationSystem.GetValidDate("Enter the minute (0-59): ", 0, 59);
+        DateTime date = new DateTime(year, month, day, hour, minute, 0);
+
+
+        Reservation Reservation = new(_locations[location], people, date, email);
+        ReservationSystem.AddReservation(Reservation);
+
+        Console.WriteLine("reservering succesvol aangemaakt\n");
     }
 }
