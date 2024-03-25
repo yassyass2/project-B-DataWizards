@@ -37,15 +37,15 @@ class Reservation
 
         int month, day, year, hour, minute;
 
-        month = ReservationSystem.GetValidDate("Enter the month (1-12): ", 1, 12);
+        month = ReservationSystem.GetValidDate("Vul een maand in (1-12): ", 1, 12);
 
-        day = ReservationSystem.GetValidDate("Enter the day (1-31): ", 1, 31);
+        day = ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31);
 
         year = 2024;
 
-        hour = ReservationSystem.GetValidDate("Enter the hour (0-23): ", 0, 23);
+        hour = ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23);
 
-        minute = ReservationSystem.GetValidDate("Enter the minute (0-59): ", 0, 59);
+        minute = ReservationSystem.GetValidDate("vul een minuut in (0-59): ", 0, 59);
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
 
 
