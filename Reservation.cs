@@ -39,11 +39,11 @@ class Reservation
             email = Console.ReadLine();
             if (ValidEmail(email))
             {
-                Console.WriteLine("Geldige email");
+                Console.WriteLine("Geldige email\n");
             }
             else
             {
-                Console.WriteLine("ongeldige email, er zit geen @ in");
+                Console.WriteLine("Ongeldige email, er zit geen @ in\b");
             }
         } while (!ValidEmail(email));
 
@@ -70,6 +70,6 @@ class Reservation
     }
     static bool ValidEmail(string email)
     {
-        return email.Contains("@");
+        return email.Contains("@") && email.Contains(".");
     }
 }
