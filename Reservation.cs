@@ -37,6 +37,14 @@ class Reservation
         {
             Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)");
             email = Console.ReadLine();
+            if (ValidEmail(email))
+            {
+                Console.WriteLine("Geldige email");
+            }
+            else
+            {
+                Console.WriteLine("ongeldige email, er zit geen @ in");
+            }
         } while (!ValidEmail(email));
 
         int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
