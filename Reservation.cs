@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 class Reservation
 {
     private static Dictionary<string, string> _locations = new Dictionary<string, string>
@@ -23,6 +25,7 @@ class Reservation
     public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
     public static void Reserve()
     {
+        string email;
         string location;
         do
         {
@@ -30,8 +33,11 @@ class Reservation
             location = Console.ReadLine();
         } while (!_locations.ContainsKey(location));
 
-        Console.WriteLine("Wat is uw e-mail? ");
-        string email = Console.ReadLine();
+        do
+        {
+            Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)");
+            email = Console.ReadLine();
+        } while (!ValidEmail(email));
 
         int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
 
@@ -53,5 +59,9 @@ class Reservation
         ReservationSystem.AddReservation(Reservation);
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
+    }
+    static bool ValidEmail(string email)
+    {
+        return email.Contains("@");
     }
 }
