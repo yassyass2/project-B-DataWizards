@@ -29,23 +29,33 @@ class Reservation
         string location;
         do
         {
-            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)");
-            location = Console.ReadLine();
-        } while (!_locations.ContainsKey(location));
+            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)\n(druk op Q om af te sluiten)");
+            location = Console.ReadLine().ToUpper();
+            if (location == "Q")
+            {
+                return;
+
+            }
+        } while (!_locations.ContainsKey(location) && location != "Q");
+        if (location == "Q")
+        {
+            return;
+        }
 
         do
         {
-            Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)");
-            email = Console.ReadLine();
-            if (ValidEmail(email))
+            Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)\n(druk op Q om af te sluiten)");
+            email = Console.ReadLine().ToUpper();
+            if (email == "Q")
             {
-                Console.WriteLine("Geldige email\n");
+                return;
             }
-            else
+            if (email != "Q" && !ValidEmail(email))
             {
-                Console.WriteLine("Ongeldige email, er zit geen @ in\b");
+                Console.WriteLine("Ongeldige email, er zit geen @ in\n");
             }
-        } while (!ValidEmail(email));
+
+        } while (email != "Q" && !ValidEmail(email));
 
         int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
 
