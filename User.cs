@@ -1,28 +1,21 @@
+using System.Net.Mail;
 using Newtonsoft.Json;
 
 public class User
 {
     public string Email { get; private set; }
     public string Password { get; private set; }
-    private static List<User> _users = ReadUsersFromJson("users.json");
+    public static List<User> _users = ReadUsersFromJson("users.json");
 
     public User(string email, string pass)
     {
         Email = email;
         Password = pass;
-        _users.Add(this);
-        WriteUsersToJson("users.json");
     }
 
-    public static bool TryLogIn()
+    public static bool TryLogIn(string mail, string password)
     {
-        Console.WriteLine("Enter your email:");
-        string email = Console.ReadLine();
-
-        Console.WriteLine("Enter your password:");
-        string password = Console.ReadLine();
-
-        return Login(email, password);
+        return Login(mail, password);
     }
     public static bool Login(string mail, string pass)
     {

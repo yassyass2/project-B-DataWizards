@@ -1,6 +1,14 @@
 [
   {
     "Email": "test@test",
-    "Password": "random"
+    "Password": null
+  },
+  {
+    "Email": "yass",
+    "Password": null
+  },
+  {
+    "Email": "y",
+    "Password": "a"
   }
 ]

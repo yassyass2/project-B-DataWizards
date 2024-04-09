@@ -8,13 +8,16 @@ static class ReservationSystem
         reservations.Add(reservation);
     }
 
-    public static void ShowReservations()
+    public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
         foreach (var reservation in reservations)
         {
-            Console.WriteLine($"\nreservering voor: {reservation.Email}");
-            Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+            if (reservation.Email == mail)
+            {
+                Console.WriteLine($"\nreservering voor: {reservation.Email}");
+                Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+            }
         }
     }
 

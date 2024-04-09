@@ -17,6 +17,7 @@ class Program
             ");
         while (true)
         {
+            string mail = "";
             Console.WriteLine("Welkom bij NY Place");
             bool Logged = false;
             do
@@ -30,15 +31,22 @@ class Program
                 string logchoice = Console.ReadLine();
                 if (logchoice.ToUpper() == "I")
                 {
-                    Logged = User.TryLogIn();
+                    Console.WriteLine("Enter your email:");
+                    mail = Console.ReadLine();
+
+                    Console.WriteLine("Enter your password:");
+                    string password = Console.ReadLine();
+                    Logged = User.TryLogIn(mail, password);
                 }
                 else if (logchoice.ToUpper() == "R")
                 {
                     Console.WriteLine("vul email voor uw account in: ");
-                    string mail = Console.ReadLine();
+                    mail = Console.ReadLine();
                     Console.WriteLine("kies een wachtwoord: ");
                     string pass = Console.ReadLine();
-                    new User(mail, pass);
+
+                    User._users.Add(new User(mail, pass));
+                    User.WriteUsersToJson("users.json");
                     Console.WriteLine("geregistreerd.\n");
 
                     Logged = User.Login(mail, pass);
@@ -47,7 +55,7 @@ class Program
                 {
                     Environment.Exit(0);
                 }
-            } while (Logged is false);
+            } while (!Logged);
 
 
             Console.WriteLine(
@@ -66,7 +74,7 @@ class Program
                     Reservation.Reserve();
                     break;
                 case "Z":
-                    ReservationSystem.ShowReservations();
+                    ReservationSystem.ShowReservations(mail);
                     break;
                 case "Q":
                     string choice2;
