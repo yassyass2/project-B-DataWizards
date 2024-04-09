@@ -45,4 +45,34 @@ static class ReservationSystem
 
         return input;
     }
+
+    public static int GetValidMinute(string prompt)
+    {
+        int input;
+        bool isValid = false;
+
+        do
+        {
+            Console.Write(prompt); 
+            string inputStr = Console.ReadLine(); 
+
+            if (int.TryParse(inputStr, out input)) 
+            {
+                if (input == 0 || input == 15 || input == 30 || input == 45)
+                {
+                    isValid = true;
+                }
+
+                else
+                {
+                    Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
+    
+                }
+            }
+
+
+        } while (!isValid); 
+
+        return input;
+    }
 }
