@@ -61,7 +61,7 @@ class Reservation
 
         int month, day, year, hour, minute;
 
-        month = ReservationSystem.GetValidDate("Vul een maand in (1-12): ", 1, 12);
+        month = ReservationSystem.GetValidMonth();
 
         day = ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31);
 
@@ -77,6 +77,10 @@ class Reservation
         ReservationSystem.AddReservation(Reservation);
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
+
+        Console.WriteLine($"\nreservering voor: {reservation.Email}");
+        Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+        
     }
     static bool ValidEmail(string email)
     {
