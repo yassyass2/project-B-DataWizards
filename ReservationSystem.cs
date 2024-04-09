@@ -46,6 +46,41 @@ static class ReservationSystem
         return input;
     }
 
+    public static int GetValidMonth()
+    {
+        List<string> months = new List<string>() { "jan", "feb", "maa", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+        bool isValid = false;
+        Console.WriteLine($"Vul een maand in ({string.Join(", ", months)})");
+        int month = 1;
+
+        do
+        {
+            string givenMonth = Console.ReadLine().ToLower();
+            if (months.Contains(givenMonth))
+            {
+                foreach (string monthName in months)
+                {
+                    if (givenMonth == monthName)
+                    {
+                        isValid = true;
+                        break;
+                    }
+                    else
+                    {
+                        month++;
+                    }
+
+                }
+            }
+            else
+            {
+                Console.WriteLine($"ongeldige invoer. graag een van deze opties invullen ({string.Join(", ", months)})");
+            }
+        } while (!isValid);
+
+        return month;
+    }
+
     public static int GetValidMinute(string prompt)
     {
         int input;
@@ -53,10 +88,10 @@ static class ReservationSystem
 
         do
         {
-            Console.Write(prompt); 
-            string inputStr = Console.ReadLine(); 
+            Console.Write(prompt);
+            string inputStr = Console.ReadLine();
 
-            if (int.TryParse(inputStr, out input)) 
+            if (int.TryParse(inputStr, out input))
             {
                 if (input == 0 || input == 15 || input == 30 || input == 45)
                 {
@@ -66,12 +101,12 @@ static class ReservationSystem
                 else
                 {
                     Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
-    
+
                 }
             }
 
 
-        } while (!isValid); 
+        } while (!isValid);
 
         return input;
     }
