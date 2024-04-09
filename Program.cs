@@ -1,4 +1,6 @@
 ﻿
+using System.Net.Mail;
+
 class Program
 {
     public static void Main()
@@ -16,10 +18,41 @@ class Program
         while (true)
         {
             Console.WriteLine("Welkom bij NY Place");
+            bool Logged = false;
+            do
+            {
+                Console.WriteLine(
+@"Wat wilt u doen?
+(I) Inloggen
+(R) Registreren
+(Q) Programma afsluiten
+                ");
+                string logchoice = Console.ReadLine();
+                if (logchoice.ToUpper() == "I")
+                {
+                    Logged = User.TryLogIn();
+                }
+                else if (logchoice.ToUpper() == "R")
+                {
+                    Console.WriteLine("vul email voor uw account in: ");
+                    string mail = Console.ReadLine();
+                    Console.WriteLine("kies een wachtwoord: ");
+                    string pass = Console.ReadLine();
+                    new User(mail, pass);
+                    Console.WriteLine("geregistreerd.\n");
+
+                    Logged = User.Login(mail, pass);
+                }
+                else if (logchoice.ToUpper() == "Q")
+                {
+                    Environment.Exit(0);
+                }
+            } while (Logged is false);
+
+
             Console.WriteLine(
 @"Wat wilt u doen?
 (R) Reserveren
-(M) Menu bekijken
 (Z) Details reservering bekijken
 (Q) Programma afsluiten
             ");
@@ -31,9 +64,6 @@ class Program
                     Console.WriteLine("Welkom bij het reserveringsmenu!");
                     Console.WriteLine("Ny place opent om  19:00");
                     Reservation.Reserve();
-                    break;
-                case "M":
-                    // menu bekijken
                     break;
                 case "Z":
                     ReservationSystem.ShowReservations();

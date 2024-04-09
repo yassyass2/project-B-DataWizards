@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
+    "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {
+    "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "projectUniqueName": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
         "projectName": "project-B-DataWizards",
-        "projectPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "projectPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
         "packagesPath": "C:\\Users\\Yassi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
+        "outputPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yassi\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
