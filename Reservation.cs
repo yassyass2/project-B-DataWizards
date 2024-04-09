@@ -73,8 +73,8 @@ class Reservation
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
 
 
-        Reservation Reservation = new(_locations[location], people, date, email);
-        ReservationSystem.AddReservation(Reservation);
+        Reservation reservation = new(_locations[location], people, date, email);
+        ReservationSystem.AddReservation(reservation);
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
