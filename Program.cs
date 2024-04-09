@@ -15,7 +15,7 @@ class Program
             ");
         while (true)
         {
-            Console.WriteLine("Welkom bij NY Place");
+            Console.WriteLine("Welkom bij NY PLACE");
             Console.WriteLine(
 @"Wat wilt u doen?
 (R) Reserveren
@@ -29,7 +29,7 @@ class Program
             {
                 case "R":
                     Console.WriteLine("Welkom bij het reserveringsmenu!");
-                    Console.WriteLine("Ny place opent om  19:00");
+                    Console.WriteLine("NY PLACE opent om  19:00");
                     Reservation.Reserve();
                     break;
                 case "M":

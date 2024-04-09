@@ -44,7 +44,7 @@ class Reservation
 
         do
         {
-            Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)\n(druk op Q om af te sluiten)");
+            Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
             email = Console.ReadLine().ToUpper();
             if (email == "Q")
             {
@@ -52,12 +52,22 @@ class Reservation
             }
             if (email != "Q" && !ValidEmail(email))
             {
-                Console.WriteLine("Ongeldige email, er zit geen @ in\n");
+                Console.WriteLine("Ongeldige email, er zit geen @ of '.' in\n");
             }
 
         } while (email != "Q" && !ValidEmail(email));
 
-        int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
+        int people;
+        string peopleInput;
+        do
+        {
+            Console.WriteLine("Hoeveel personen? (1-16)\n(Druk op Q om af te sluiten)");
+            peopleInput = Console.ReadLine().ToUpper();
+            if (peopleInput == "Q")
+            {
+                return;
+            }
+        } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
 
         int month, day, year, hour, minute;
 
@@ -80,7 +90,6 @@ class Reservation
 
         Console.WriteLine($"\nreservering voor: {reservation.Email}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
-        
     }
     static bool ValidEmail(string email)
     {

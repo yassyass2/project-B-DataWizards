@@ -38,7 +38,7 @@ static class ReservationSystem
 
             if (!isValid)
             {
-                Console.WriteLine($"ongeldige invoer. graag een nummer tussen de {min} en {max}.");
+                Console.WriteLine($"Ongeldige invoer. graag een nummer tussen de {min} en {max}.\nAls u met meer dan 16 personen wilt dineren, kunt u ons bellen of mailen.");
             }
 
         } while (!isValid);
@@ -48,7 +48,7 @@ static class ReservationSystem
 
     public static int GetValidMonth()
     {
-        List<string> months = new List<string>() { "jan", "feb", "maa", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+        List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
         bool isValid = false;
         Console.WriteLine($"Vul een maand in ({string.Join(", ", months)})");
         int month = 1;
