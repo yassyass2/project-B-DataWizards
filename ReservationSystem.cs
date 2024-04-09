@@ -69,7 +69,6 @@ static class ReservationSystem
                     {
                         month++;
                     }
-
                 }
             }
             else
@@ -101,11 +100,8 @@ static class ReservationSystem
                 else
                 {
                     Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
-
                 }
             }
-
-
         } while (!isValid);
 
         return input;
