@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
+    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {
+    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "projectUniqueName": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
         "projectName": "project-B-DataWizards",
-        "projectPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "projectPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
         "packagesPath": "C:\\Users\\Yassi\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
+        "outputPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Yassi\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -9,6 +9,10 @@
   },
   {
     "Email": "y",
-    "Password": "a"
+    "Password": null
+  },
+  {
+    "Email": "lol",
+    "Password": "lol"
   }
 ]

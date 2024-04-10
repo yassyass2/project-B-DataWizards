@@ -23,9 +23,8 @@ class Reservation
 
     public void ChangeDate(DateTime newdate) => Date = newdate;
     public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
-    public static void Reserve()
+    public static void Reserve(string email)
     {
-        string email;
         string location;
         do
         {
@@ -44,8 +43,8 @@ class Reservation
 
         do
         {
-            Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
-            email = Console.ReadLine().ToUpper();
+            // Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
+            // email = Console.ReadLine().ToUpper();
             if (email == "Q")
             {
                 return;
