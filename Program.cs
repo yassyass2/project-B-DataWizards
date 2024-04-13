@@ -31,10 +31,10 @@ class Program
                 string logchoice = Console.ReadLine();
                 if (logchoice.ToUpper() == "I")
                 {
-                    Console.WriteLine("Enter your email:");
+                    Console.WriteLine("Vul uw email in:");
                     mail = Console.ReadLine();
 
-                    Console.WriteLine("Enter your password:");
+                    Console.WriteLine("Vul uw wachtwoord in:");
                     string password = Console.ReadLine();
                     Logged = User.TryLogIn(mail, password);
                 }

@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 static class ReservationSystem
 {
 
@@ -30,7 +32,6 @@ static class ReservationSystem
         {
             Console.Write(prompt);
             string inputStr = Console.ReadLine();
-
             if (int.TryParse(inputStr, out input))
             {
                 if (input >= min && input <= max)
@@ -41,7 +42,7 @@ static class ReservationSystem
 
             if (!isValid)
             {
-                Console.WriteLine($"Ongeldige invoer. graag een nummer tussen de {min} en {max}.\nAls u met meer dan 16 personen wilt dineren, kunt u ons bellen of mailen.");
+                Console.WriteLine($"Ongeldige invoer. graag een nummer tussen de {min} en {max}.");
             }
 
         } while (!isValid);

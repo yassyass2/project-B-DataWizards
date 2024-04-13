@@ -31,3 +31,6 @@ c:\Users\Yassi\Desktop\project-B-DataWizards\bin\Debug\net7.0\Newtonsoft.Json.dl
 c:\Users\Yassi\Desktop\project-B-DataWizards\obj\Debug\net7.0\project-B-DataWizards.csproj.CopyComplete
 c:\Users\Yassi\Desktop\project-B-DataWizards\obj\Debug\net7.0\project-B-DataWizards.genruntimeconfig.cache
 c:\Users\Yassi\Desktop\project-B-DataWizards\obj\Debug\net7.0\ref\project-B-DataWizards.dll
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\(ScrumProjects)\project-B-DataWizards\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\(ScrumProjects)\project-B-DataWizards\obj\Debug\net7.0\project-B-DataWizards.csproj.AssemblyReference.cache
+C:\Users\lucas\OneDrive\Documenten\GitHub\GithubScrum(new)\(ScrumProjects)\project-B-DataWizards\obj\Debug\net7.0\project-B-DataWizards.csproj.CopyComplete

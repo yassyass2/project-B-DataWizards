@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
+    "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj": {
+    "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
         "projectName": "project-B-DataWizards",
-        "projectPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
-        "packagesPath": "C:\\Users\\Yassi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
+        "projectPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
+        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yassi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
