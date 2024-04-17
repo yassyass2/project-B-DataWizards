@@ -4,19 +4,19 @@ public class User
 {
     public string Email { get; private set; }
     public string Password { get; private set; }
-    private static List<UserFormat> _users = ReadUsersFromJson("users.json");
+    private static List<User> _users = new();
 
     public User(string email, string pass)
     {
         Email = email;
         Password = pass;
-        _users.Add(new UserFormat(email, pass));
+        _users.Add(this);
         WriteUsersToJson("users.json");
     }
 
     public static bool Login(string mail, string pass)
     {
-        UserFormat user = _users.Find(u => u.Email == mail && u.Password == pass);
+        User user = _users.Find(u => u.Email == mail && u.Password == pass);
 
         if (user != null)
         {
@@ -29,15 +29,19 @@ public class User
         return user != null;
     }
 
-    private static List<UserFormat> ReadUsersFromJson(string path)
+    private static void ReadUsersFromJson(string path)
     {
         if (!File.Exists(path))
         {
-            return new List<UserFormat>();
+            return;
         }
 
         string json = File.ReadAllText(path);
-        return JsonConvert.DeserializeObject<List<UserFormat>>(json);
+
+        foreach (UserFormat u in JsonConvert.DeserializeObject<List<UserFormat>>(json))
+        {
+            _users.Add(new User(u.email, u.password));
+        }
     }
 
     public static void WriteUsersToJson(string path)

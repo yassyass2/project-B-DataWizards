@@ -1,11 +1,6 @@
 class UserFormat
 {
-    public string Email { get; private set; }
-    public string Password { get; private set; }
-
-    public UserFormat(string email, string password)
-    {
-        Email = email;
-        Password = password;
-    }
+    public string email { get; set; }
+    public string password { get; set; }
 }
+
