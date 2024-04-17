@@ -23,9 +23,8 @@ class Reservation
 
     public void ChangeDate(DateTime newdate) => Date = newdate;
     public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
-    public static void Reserve()
+    public static void Reserve(string email)
     {
-        string email;
         string location;
         do
         {
@@ -44,24 +43,34 @@ class Reservation
 
         do
         {
-            Console.WriteLine("Wat is uw e-mail? (moet een @ bevatten)\n(druk op Q om af te sluiten)");
-            email = Console.ReadLine().ToUpper();
+            // Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
+            // email = Console.ReadLine().ToUpper();
             if (email == "Q")
             {
                 return;
             }
             if (email != "Q" && !ValidEmail(email))
             {
-                Console.WriteLine("Ongeldige email, er zit geen @ in\n");
+                Console.WriteLine("Ongeldige email, er zit geen @ of '.' in\n");
             }
 
         } while (email != "Q" && !ValidEmail(email));
 
-        int people = ReservationSystem.GetValidDate("Hoeveel personen? ", 1, 16);
+        int people;
+        string peopleInput;
+        do
+        {
+            Console.WriteLine("Hoeveel personen? (1-16)\n(Druk op Q om af te sluiten)");
+            peopleInput = Console.ReadLine().ToUpper();
+            if (peopleInput == "Q")
+            {
+                return;
+            }
+        } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
 
         int month, day, year, hour, minute;
 
-        month = ReservationSystem.GetValidDate("Vul een maand in (1-12): ", 1, 12);
+        month = ReservationSystem.GetValidMonth();
 
         day = ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31);
 
@@ -69,14 +78,17 @@ class Reservation
 
         hour = ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23);
 
-        minute = ReservationSystem.GetValidMinute("vul een minuut-optie in (0 - 15 - 30 - 45): ");
+        minute = ReservationSystem.GetValidMinute("Vul een minuut-optie in (0 - 15 - 30 - 45): ");
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
 
 
-        Reservation Reservation = new(_locations[location], people, date, email);
-        ReservationSystem.AddReservation(Reservation);
+        Reservation reservation = new(_locations[location], people, date, email);
+        ReservationSystem.AddReservation(reservation);
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
+
+        Console.WriteLine($"\nreservering voor: {reservation.Email}");
+        Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
     }
     static bool ValidEmail(string email)
     {

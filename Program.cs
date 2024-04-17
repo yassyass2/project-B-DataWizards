@@ -17,9 +17,9 @@ class Program
             ");
         while (true)
         {
+            string mail = "";
             Console.WriteLine("Welkom bij NY Place");
             bool Logged = false;
-            string mail;
             do
             {
                 Console.WriteLine(
@@ -29,19 +29,24 @@ class Program
 (Q) Programma afsluiten
                 ");
                 string logchoice = Console.ReadLine();
-
-                Console.WriteLine("vul email voor uw account in: ");
-                mail = Console.ReadLine();
-                Console.WriteLine("kies een wachtwoord: ");
-                string pass = Console.ReadLine();
-
                 if (logchoice.ToUpper() == "I")
                 {
-                    Logged = User.Login(mail, pass);
+                    Console.WriteLine("Vul uw email in:");
+                    mail = Console.ReadLine();
+
+                    Console.WriteLine("Vul uw wachtwoord in:");
+                    string password = Console.ReadLine();
+                    Logged = User.TryLogIn(mail, password);
                 }
                 else if (logchoice.ToUpper() == "R")
                 {
-                    new User(mail, pass);
+                    Console.WriteLine("vul email voor uw account in: ");
+                    mail = Console.ReadLine();
+                    Console.WriteLine("kies een wachtwoord: ");
+                    string pass = Console.ReadLine();
+
+                    User._users.Add(new User(mail, pass));
+                    User.WriteUsersToJson("users.json");
                     Console.WriteLine("geregistreerd.\n");
 
                     Logged = User.Login(mail, pass);
@@ -50,7 +55,7 @@ class Program
                 {
                     Environment.Exit(0);
                 }
-            } while (Logged is false);
+            } while (!Logged);
 
 
             Console.WriteLine(
@@ -66,10 +71,10 @@ class Program
                 case "R":
                     Console.WriteLine("Welkom bij het reserveringsmenu!");
                     Console.WriteLine("Ny place opent om  19:00");
-                    Reservation.Reserve();
+                    Reservation.Reserve(mail);
                     break;
                 case "Z":
-                    ReservationSystem.ShowReservations();
+                    ReservationSystem.ShowReservations(mail);
                     break;
                 case "Q":
                     string choice2;

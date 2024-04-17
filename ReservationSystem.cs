@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 static class ReservationSystem
 {
 
@@ -8,13 +10,16 @@ static class ReservationSystem
         reservations.Add(reservation);
     }
 
-    public static void ShowReservations()
+    public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
         foreach (var reservation in reservations)
         {
-            Console.WriteLine($"\nreservering voor: {reservation.Email}");
-            Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+            if (reservation.Email == mail)
+            {
+                Console.WriteLine($"\nreservering voor: {reservation.Email}");
+                Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+            }
         }
     }
 
@@ -27,7 +32,6 @@ static class ReservationSystem
         {
             Console.Write(prompt);
             string inputStr = Console.ReadLine();
-
             if (int.TryParse(inputStr, out input))
             {
                 if (input >= min && input <= max)
@@ -38,12 +42,46 @@ static class ReservationSystem
 
             if (!isValid)
             {
-                Console.WriteLine($"ongeldige invoer. graag een nummer tussen de {min} en {max}.");
+                Console.WriteLine($"Ongeldige invoer. graag een nummer tussen de {min} en {max}.");
             }
 
         } while (!isValid);
 
         return input;
+    }
+
+    public static int GetValidMonth()
+    {
+        List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+        bool isValid = false;
+        Console.WriteLine($"Vul een maand in ({string.Join(", ", months)})");
+        int month = 1;
+
+        do
+        {
+            string givenMonth = Console.ReadLine().ToLower();
+            if (months.Contains(givenMonth))
+            {
+                foreach (string monthName in months)
+                {
+                    if (givenMonth == monthName)
+                    {
+                        isValid = true;
+                        break;
+                    }
+                    else
+                    {
+                        month++;
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"ongeldige invoer. graag een van deze opties invullen ({string.Join(", ", months)})");
+            }
+        } while (!isValid);
+
+        return month;
     }
 
     public static int GetValidMinute(string prompt)
@@ -53,10 +91,10 @@ static class ReservationSystem
 
         do
         {
-            Console.Write(prompt); 
-            string inputStr = Console.ReadLine(); 
+            Console.Write(prompt);
+            string inputStr = Console.ReadLine();
 
-            if (int.TryParse(inputStr, out input)) 
+            if (int.TryParse(inputStr, out input))
             {
                 if (input == 0 || input == 15 || input == 30 || input == 45)
                 {
@@ -66,12 +104,9 @@ static class ReservationSystem
                 else
                 {
                     Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
-    
                 }
             }
-
-
-        } while (!isValid); 
+        } while (!isValid);
 
         return input;
     }

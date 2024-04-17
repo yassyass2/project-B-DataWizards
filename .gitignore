@@ -4,3 +4,17 @@ obj/project-B-DataWizards.csproj.nuget.g.props
 obj/project.assets.json
 obj/project.nuget.cache
 obj/Debug/net7.0/project-B-DataWizards.AssemblyInfoInputs.cache
+obj/Debug/net7.0/project-B-DataWizards.AssemblyInfo.cs
+obj/Debug/net7.0/project-B-DataWizards.AssemblyInfoInputs.cache
+obj/Debug/net7.0/project-B-DataWizards.assets.cache
+obj/Debug/net7.0/project-B-DataWizards.GeneratedMSBuildEditorConfig.editorconfig
+obj/project-B-DataWizards.csproj.nuget.dgspec.json
+obj/project-B-DataWizards.csproj.nuget.g.props
+obj/project.assets.json
+obj/project.nuget.cache
+
+.fake
+obj/Debug/net7.0/project-B-DataWizards.AssemblyInfoInputs.cache
+obj/Debug/net7.0/project-B-DataWizards.assets.cache
+obj/Debug/net7.0/project-B-DataWizards.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net7.0/project-B-DataWizards.AssemblyInfo.cs
