@@ -55,19 +55,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lucas\\.nuget\\packages\\": {}
+    "C:\\Users\\Yassi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
+      "projectUniqueName": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
       "projectName": "project-B-DataWizards",
-      "projectPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\project-B-DataWizards.csproj",
-      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lucas\\OneDrive\\Documenten\\GitHub\\GithubScrum(new)\\(ScrumProjects)\\project-B-DataWizards\\obj\\",
+      "projectPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\project-B-DataWizards.csproj",
+      "packagesPath": "C:\\Users\\Yassi\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Yassi\\Desktop\\project-B-DataWizards\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Yassi\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

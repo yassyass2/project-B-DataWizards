@@ -4,7 +4,7 @@ public class User
 {
     public string Email { get; private set; }
     public string Password { get; private set; }
-    private static List<User> _users = new();
+    public static List<User> _users = new();
 
     public User(string email, string pass)
     {
@@ -29,7 +29,7 @@ public class User
         return user != null;
     }
 
-    private static void ReadUsersFromJson(string path)
+    public static void ReadUsersFromJson(string path)
     {
         if (!File.Exists(path))
         {

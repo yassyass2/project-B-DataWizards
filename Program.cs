@@ -20,6 +20,7 @@ class Program
             string mail = "";
             Console.WriteLine("Welkom bij NY Place");
             bool Logged = false;
+            User.ReadUsersFromJson("users.json");
             do
             {
                 Console.WriteLine(
@@ -36,7 +37,7 @@ class Program
 
                     Console.WriteLine("Vul uw wachtwoord in:");
                     string password = Console.ReadLine();
-                    Logged = User.TryLogIn(mail, password);
+                    Logged = User.Login(mail, password);
                 }
                 else if (logchoice.ToUpper() == "R")
                 {
