@@ -19,6 +19,7 @@ class Program
         {
             Console.WriteLine("Welkom bij NY Place");
             bool Logged = false;
+            string mail;
             do
             {
                 Console.WriteLine(
@@ -28,16 +29,18 @@ class Program
 (Q) Programma afsluiten
                 ");
                 string logchoice = Console.ReadLine();
+
+                Console.WriteLine("vul email voor uw account in: ");
+                mail = Console.ReadLine();
+                Console.WriteLine("kies een wachtwoord: ");
+                string pass = Console.ReadLine();
+
                 if (logchoice.ToUpper() == "I")
                 {
-                    Logged = User.TryLogIn();
+                    Logged = User.Login(mail, pass);
                 }
                 else if (logchoice.ToUpper() == "R")
                 {
-                    Console.WriteLine("vul email voor uw account in: ");
-                    string mail = Console.ReadLine();
-                    Console.WriteLine("kies een wachtwoord: ");
-                    string pass = Console.ReadLine();
                     new User(mail, pass);
                     Console.WriteLine("geregistreerd.\n");
 
