@@ -11,7 +11,7 @@ public class User
         Email = email;
         Password = pass;
         _users.Add(this);
-        WriteUsersToJson("users.json");
+
     }
 
     public static bool Login(string mail, string pass)

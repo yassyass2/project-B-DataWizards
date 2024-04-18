@@ -47,13 +47,14 @@ class Program
                     string pass = Console.ReadLine();
 
                     User._users.Add(new User(mail, pass));
-                    User.WriteUsersToJson("users.json");
+                    //User.WriteUserToJson("users.json", new User(mail, pass));
                     Console.WriteLine("geregistreerd.\n");
 
                     Logged = User.Login(mail, pass);
                 }
                 else if (logchoice.ToUpper() == "Q")
                 {
+                    User.WriteUsersToJson("users.json");
                     Environment.Exit(0);
                 }
             } while (!Logged);
@@ -85,6 +86,7 @@ class Program
                         choice2 = Console.ReadLine().ToLower();
                         if (choice2 == "ja")
                         {
+                            User.WriteUsersToJson("users.json");
                             return;
                         }
                     } while (choice2 != "ja" && choice2 != "nee");

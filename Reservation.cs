@@ -36,15 +36,10 @@ class Reservation
 
             }
         } while (!_locations.ContainsKey(location) && location != "Q");
-        if (location == "Q")
-        {
-            return;
-        }
-
         do
         {
-            // Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
-            // email = Console.ReadLine().ToUpper();
+            Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
+            email = Console.ReadLine().ToUpper();
             if (email == "Q")
             {
                 return;
