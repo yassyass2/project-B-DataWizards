@@ -12,11 +12,16 @@ static class ReservationSystem
 
     public static void ShowReservations(string mail)
     {
-        Console.WriteLine("Huidige Reserveringen:");
+        if (reservations.Count == 0)
+        {
+            Console.WriteLine("Er zijn geen reserveringen");
+        }
+
         foreach (var reservation in reservations)
         {
             if (reservation.Email == mail)
             {
+                Console.WriteLine("Huidige Reserveringen:");
                 Console.WriteLine($"\nreservering voor: {reservation.Email}");
                 Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
             }
