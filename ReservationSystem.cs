@@ -96,8 +96,8 @@ static class ReservationSystem
             if (int.TryParse(inputStr, out input))
             {
                 if (input == 0 || input == 15 || input == 30 || input == 45)
-                    return 0; 
-                
+                    return input;
+
                 Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
             }
         } while (input != 0 || input != 15 || input != 30 || input != 45);
