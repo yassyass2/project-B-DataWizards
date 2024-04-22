@@ -1,47 +1,49 @@
 class Menu
 {
-    public List<Option> Options;
+    public List<string> Options;
 
-    public Menu(List<Option> options)
+    public Menu(List<string> options)
     {
         Options = options;
     }
-    public void HandleMenu(List<Option> Options)
+    public string HandleMenu(List<string> Options)
     {
         int index = 0;
 
-        WriteMenu(this.Options, this.Options[index]);
+        WriteMenu(Options[index]);
 
         ConsoleKeyInfo keyinfo;
         do
         {
             keyinfo = Console.ReadKey();
-
-            if (keyinfo.Key == ConsoleKey.DownArrow)
+            while (true)
             {
-                if (index + 1 < Options.Count)
+                if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
-                    index++;
-                    WriteMenu(Options, Options[index]);
+                    if (index + 1 < Options.Count)
+                    {
+                        index++;
+                        WriteMenu(Options[index]);
+                    }
+                }
+                if (keyinfo.Key == ConsoleKey.UpArrow)
+                {
+                    if (index - 1 >= 0)
+                    {
+                        index--;
+                        WriteMenu(Options[index]);
+                    }
+                }
+                if (keyinfo.Key == ConsoleKey.Enter)
+                {
+                    return Options[index];
+                    // Options[index].Selected.Invoke();
+                    // index = 0;
                 }
             }
-            if (keyinfo.Key == ConsoleKey.UpArrow)
-            {
-                if (index - 1 >= 0)
-                {
-                    index--;
-                    WriteMenu(Options, Options[index]);
-                }
-            }
-            if (keyinfo.Key == ConsoleKey.Enter)
-            {
-                Options[index].Selected.Invoke();
-                index = 0;
-            }
-        }
-        while (keyinfo.Key != ConsoleKey.X);
+        } while (keyinfo.Key != ConsoleKey.X);
 
-        Console.ReadKey();
+        //Console.ReadKey();
 
     }
     public void WriteTemporaryMessage(string message)
@@ -49,16 +51,16 @@ class Menu
         Console.Clear();
         Console.WriteLine(message);
         Thread.Sleep(3000);
-        WriteMenu(Options, Options.First());
+        WriteMenu(Options.First());
     }
 
 
 
-    public void WriteMenu(List<Option> options, Option selectedOption)
+    public void WriteMenu(string selectedOption)
     {
         Console.Clear();
 
-        foreach (Option option in Options)
+        foreach (string option in Options)
         {
             if (option == selectedOption)
             {
@@ -69,7 +71,7 @@ class Menu
                 Console.Write(" ");
             }
 
-            Console.WriteLine(option.Name);
+            Console.WriteLine(option);
         }
     }
 }
