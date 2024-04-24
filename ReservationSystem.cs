@@ -59,24 +59,40 @@ static class ReservationSystem
     {
         List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
         bool isValid = false;
-        Console.WriteLine($"Vul een maand in ({string.Join(", ", months)})");
-        int month = 1;
+        Console.WriteLine($"Vul een maand in:");
+        int currentMonthIndex = DateTime.Now.Month - 1;
+        int month = currentMonthIndex + 1;
 
         do
         {
+            for (int i = 0; i < months.Count; i++)
+            {
+                if (i == currentMonthIndex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(months[i]);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.Write(months[i]);
+                }
+                if (i < months.Count - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+            Console.WriteLine();
             string givenMonth = Console.ReadLine().ToLower();
             if (months.Contains(givenMonth))
             {
-                foreach (string monthName in months)
+                for (int i = 0; i < months.Count; i += 1)
                 {
-                    if (givenMonth == monthName)
+                    if (givenMonth == months[i])
                     {
+                        month = i + 1;
                         isValid = true;
                         break;
-                    }
-                    else
-                    {
-                        month++;
                     }
                 }
             }
