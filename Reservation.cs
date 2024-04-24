@@ -82,7 +82,7 @@ class Reservation
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
-        Console.WriteLine($"\nreservering voor: {reservation.Email}");
+        Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
     }
     static bool ValidEmail(string email)

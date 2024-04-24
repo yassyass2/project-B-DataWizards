@@ -59,7 +59,7 @@ static class ReservationSystem
     {
         List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
         bool isValid = false;
-        Console.WriteLine($"Vul een maand in:");
+        Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
         int currentMonthIndex = DateTime.Now.Month - 1;
         int month = currentMonthIndex + 1;
 
@@ -69,7 +69,7 @@ static class ReservationSystem
             {
                 if (i == currentMonthIndex)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Green; // Highlight current month
                     Console.Write(months[i]);
                     Console.ResetColor();
                 }
@@ -77,16 +77,18 @@ static class ReservationSystem
                 {
                     Console.Write(months[i]);
                 }
+
                 if (i < months.Count - 1)
                 {
                     Console.Write(", ");
                 }
             }
             Console.WriteLine();
+
             string givenMonth = Console.ReadLine().ToLower();
             if (months.Contains(givenMonth))
             {
-                for (int i = 0; i < months.Count; i += 1)
+                for (int i = 0; i < months.Count; i++)
                 {
                     if (givenMonth == months[i])
                     {
