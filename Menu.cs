@@ -6,7 +6,7 @@ class Menu
     {
         Options = options;
     }
-    public string HandleMenu(List<string> Options)
+    public string HandleMenu()
     {
         int index = 0;
 
@@ -16,34 +16,31 @@ class Menu
         do
         {
             keyinfo = Console.ReadKey();
-            while (true)
+
+            if (keyinfo.Key == ConsoleKey.DownArrow)
             {
-                if (keyinfo.Key == ConsoleKey.DownArrow)
+                if (index + 1 < Options.Count)
                 {
-                    if (index + 1 < Options.Count)
-                    {
-                        index++;
-                        WriteMenu(Options[index]);
-                    }
-                }
-                if (keyinfo.Key == ConsoleKey.UpArrow)
-                {
-                    if (index - 1 >= 0)
-                    {
-                        index--;
-                        WriteMenu(Options[index]);
-                    }
-                }
-                if (keyinfo.Key == ConsoleKey.Enter)
-                {
-                    return Options[index];
-                    // Options[index].Selected.Invoke();
-                    // index = 0;
+                    index++;
+                    WriteMenu(Options[index]);
                 }
             }
-        } while (keyinfo.Key != ConsoleKey.X);
-
-        //Console.ReadKey();
+            if (keyinfo.Key == ConsoleKey.UpArrow)
+            {
+                if (index - 1 >= 0)
+                {
+                    index--;
+                    WriteMenu(Options[index]);
+                }
+            }
+            if (keyinfo.Key == ConsoleKey.Enter)
+            {
+                return Convert.ToString(index);
+                // Options[index].Selected.Invoke();
+                // index = 0;
+            }
+        } while (keyinfo.Key != ConsoleKey.Q);
+        return "Q";
 
     }
     public void WriteTemporaryMessage(string message)
@@ -53,13 +50,9 @@ class Menu
         Thread.Sleep(3000);
         WriteMenu(Options.First());
     }
-
-
-
     public void WriteMenu(string selectedOption)
     {
         Console.Clear();
-
         foreach (string option in Options)
         {
             if (option == selectedOption)
