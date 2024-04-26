@@ -62,28 +62,28 @@ static class ReservationSystem
         Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
         int currentMonthIndex = DateTime.Now.Month - 1;
         int month = currentMonthIndex + 1;
-
+        // Maandenlijst omkeren met huidige maand eerst
+        months = months.Skip(currentMonthIndex).Concat(months.Take(currentMonthIndex)).ToList(); // skip() zorgt voor dat alle maanden voor de geselecteerde maand verwijdert worden, Take() zorgt ervoor dat alle maanden na de geselecteerde maand. 
+                                                                                                 // Concat() maakt de geselecteerde lijsten van skip() en take() weer tot 1 verzameling en ToList() zet de verzameling weer terug een een list
         do
         {
             for (int i = 0; i < months.Count; i++)
             {
-                if (i == currentMonthIndex)
+                if (i == 0) // nulste maand wordt groen gemarkeerd
                 {
-                    Console.ForegroundColor = ConsoleColor.Green; // Highlight current month
-                    Console.Write(months[i]);
-                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Green; // Huidige maand groen markeren
                 }
-                else
+                Console.WriteLine(months[i]);
+                if (i == 0)
                 {
-                    Console.Write(months[i]);
+                    Console.ResetColor(); // Kleur resetten na het printen van de huidige maand
                 }
 
                 if (i < months.Count - 1)
                 {
-                    Console.Write(", ");
+                    Console.Write("");
                 }
             }
-            Console.WriteLine();
 
             string givenMonth = Console.ReadLine().ToLower();
             if (months.Contains(givenMonth))
@@ -92,7 +92,7 @@ static class ReservationSystem
                 {
                     if (givenMonth == months[i])
                     {
-                        month = i + 1;
+                        month = (currentMonthIndex + i + 1) % 12;
                         isValid = true;
                         break;
                     }
