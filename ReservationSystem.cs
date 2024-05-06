@@ -12,16 +12,16 @@ static class ReservationSystem
 
     public static void ShowReservations(string mail)
     {
+        Console.WriteLine("Huidige Reserveringen:");
         if (reservations.Count == 0)
         {
-            Console.WriteLine("Er zijn geen reserveringen");
+            Console.WriteLine("U heeft geen huidige reserveringen");
+            return;
         }
-
         foreach (var reservation in reservations)
         {
             if (reservation.Email == mail)
             {
-                Console.WriteLine("Huidige Reserveringen:");
                 Console.WriteLine($"\nreservering voor: {reservation.Email}");
                 Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
             }
@@ -119,7 +119,7 @@ static class ReservationSystem
             if (int.TryParse(inputStr, out input))
             {
                 if (input == 0 || input == 15 || input == 30 || input == 45)
-                    return input;
+                    return 0;
 
                 Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
             }

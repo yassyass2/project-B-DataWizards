@@ -84,6 +84,9 @@ class Reservation
 
         Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+
+        Console.WriteLine("\ndruk op een knop om verder te gaan...");
+        Console.ReadKey();
     }
     static bool ValidEmail(string email)
     {
