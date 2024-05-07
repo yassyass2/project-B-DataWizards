@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-
+using Newtonsoft.Json;
+using System.IO;
 class Reservation
 {
     private static Dictionary<string, string> _locations = new Dictionary<string, string>
@@ -78,6 +79,7 @@ class Reservation
 
 
         Reservation reservation = new(_locations[location], people, date, email);
+        Reservation.WriteReservationToJSON("Reservation.json", reservation);
         ReservationSystem.AddReservation(reservation);
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
@@ -91,5 +93,11 @@ class Reservation
     static bool ValidEmail(string email)
     {
         return email.Contains("@") && email.Contains(".");
+    }
+
+    public static void WriteReservationToJSON(string path, Reservation reservation)
+    {
+        string json = JsonConvert.SerializeObject(reservation, Formatting.Indented);
+        File.WriteAllText(path, json);
     }
 }
