@@ -1,22 +1,19 @@
-using System.Net.Mail;
 using Newtonsoft.Json;
 
 public class User
 {
     public string Email { get; private set; }
     public string Password { get; private set; }
-    public static List<User> _users = ReadUsersFromJson("users.json");
+    public static List<User> _users = new();
 
     public User(string email, string pass)
     {
         Email = email;
         Password = pass;
+        _users.Add(this);
+
     }
 
-    public static bool TryLogIn(string mail, string password)
-    {
-        return Login(mail, password);
-    }
     public static bool Login(string mail, string pass)
     {
         User user = _users.Find(u => u.Email == mail && u.Password == pass);
@@ -32,15 +29,19 @@ public class User
         return user != null;
     }
 
-    private static List<User> ReadUsersFromJson(string path)
+    public static void ReadUsersFromJson(string path)
     {
         if (!File.Exists(path))
         {
-            return new List<User>();
+            return;
         }
 
         string json = File.ReadAllText(path);
-        return JsonConvert.DeserializeObject<List<User>>(json);
+
+        foreach (UserFormat u in JsonConvert.DeserializeObject<List<UserFormat>>(json))
+        {
+            _users.Add(new User(u.email, u.password));
+        }
     }
 
     public static void WriteUsersToJson(string path)

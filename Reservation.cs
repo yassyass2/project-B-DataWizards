@@ -36,15 +36,10 @@ class Reservation
 
             }
         } while (!_locations.ContainsKey(location) && location != "Q");
-        if (location == "Q")
-        {
-            return;
-        }
-
         do
         {
-            // Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
-            // email = Console.ReadLine().ToUpper();
+            Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
+            email = Console.ReadLine().ToUpper();
             if (email == "Q")
             {
                 return;
@@ -87,8 +82,11 @@ class Reservation
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
-        Console.WriteLine($"\nreservering voor: {reservation.Email}");
+        Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+
+        Console.WriteLine("\ndruk op een knop om verder te gaan...");
+        Console.ReadKey();
     }
     static bool ValidEmail(string email)
     {

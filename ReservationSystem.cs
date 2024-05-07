@@ -13,6 +13,11 @@ static class ReservationSystem
     public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
+        if (reservations.Count == 0)
+        {
+            Console.WriteLine("U heeft geen huidige reserveringen");
+            return;
+        }
         foreach (var reservation in reservations)
         {
             if (reservation.Email == mail)
@@ -54,24 +59,42 @@ static class ReservationSystem
     {
         List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
         bool isValid = false;
-        Console.WriteLine($"Vul een maand in ({string.Join(", ", months)})");
-        int month = 1;
-
+        Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
+        int currentMonthIndex = DateTime.Now.Month - 1;
+        int month = currentMonthIndex + 1;
+        // Maandenlijst omkeren met huidige maand eerst
+        months = months.Skip(currentMonthIndex).Concat(months.Take(currentMonthIndex)).ToList(); // skip() zorgt voor dat alle maanden voor de geselecteerde maand verwijdert worden, Take() zorgt ervoor dat alle maanden na de geselecteerde maand. 
+                                                                                                 // Concat() maakt de geselecteerde lijsten van skip() en take() weer tot 1 verzameling en ToList() zet de verzameling weer terug een een list
         do
         {
+            for (int i = 0; i < months.Count; i++)
+            {
+                if (i == 0) // nulste maand wordt groen gemarkeerd
+                {
+                    Console.ForegroundColor = ConsoleColor.Green; // Huidige maand groen markeren
+                }
+                Console.WriteLine(months[i]);
+                if (i == 0)
+                {
+                    Console.ResetColor(); // Kleur resetten na het printen van de huidige maand
+                }
+
+                if (i < months.Count - 1)
+                {
+                    Console.Write("");
+                }
+            }
+
             string givenMonth = Console.ReadLine().ToLower();
             if (months.Contains(givenMonth))
             {
-                foreach (string monthName in months)
+                for (int i = 0; i < months.Count; i++)
                 {
-                    if (givenMonth == monthName)
+                    if (givenMonth == months[i])
                     {
+                        month = (currentMonthIndex + i + 1) % 12;
                         isValid = true;
                         break;
-                    }
-                    else
-                    {
-                        month++;
                     }
                 }
             }
@@ -87,7 +110,6 @@ static class ReservationSystem
     public static int GetValidMinute(string prompt)
     {
         int input;
-        bool isValid = false;
 
         do
         {
@@ -97,16 +119,11 @@ static class ReservationSystem
             if (int.TryParse(inputStr, out input))
             {
                 if (input == 0 || input == 15 || input == 30 || input == 45)
-                {
-                    isValid = true;
-                }
+                    return 0;
 
-                else
-                {
-                    Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
-                }
+                Console.WriteLine($"ongeldige invoer. graag een nummer tussen van de tijdslots: 0 - 15 - 30 - 45.");
             }
-        } while (!isValid);
+        } while (input != 0 || input != 15 || input != 30 || input != 45);
 
         return input;
     }
