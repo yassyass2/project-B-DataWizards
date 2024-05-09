@@ -36,6 +36,8 @@ class Reservation
 
             }
         } while (!_locations.ContainsKey(location) && location != "Q");
+        
+        /*
         do
         {
             Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
@@ -50,6 +52,7 @@ class Reservation
             }
 
         } while (email != "Q" && !ValidEmail(email));
+        */
 
         int people;
         string peopleInput;
@@ -88,7 +91,7 @@ class Reservation
         Console.WriteLine("\ndruk op een knop om verder te gaan...");
         Console.ReadKey();
     }
-    static bool ValidEmail(string email)
+    public static bool ValidEmail(string email)
     {
         return email.Contains("@") && email.Contains(".");
     }
