@@ -127,9 +127,4 @@ static class ReservationSystem
 
         return input;
     }
-
-    public static void ShowTables()
-    {
-        Console.WriteLine("tables");
-    }
 }

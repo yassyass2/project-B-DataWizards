@@ -63,6 +63,10 @@ class Reservation
             }
         } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
 
+        MapGenerator generator = new MapGenerator(20, 20);
+        generator.GenerateMap();
+        generator.PrintMap();
+
         int month, day, year, hour, minute;
 
         month = ReservationSystem.GetValidMonth();
