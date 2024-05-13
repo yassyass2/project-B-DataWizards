@@ -25,57 +25,57 @@ class Reservation
     public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
     public static void ChangeReservation(Reservation reservation)
     {
-        
+
         int people;
         string location, peopleInput;
 
-        
-                bool changing = true;
-                while (changing)
-                {
-                    Console.WriteLine("Wat wilt u aanpassen? (locatie/personen/datum)(Q om af te sluiten)");
-                    string answer2 = Console.ReadLine();
-                    switch (answer2.ToLower())
+
+        bool changing = true;
+        while (changing)
+        {
+            Console.WriteLine("Wat wilt u aanpassen? (locatie/personen/datum)(Q om af te sluiten)");
+            string answer2 = Console.ReadLine();
+            switch (answer2.ToLower())
+            {
+                case "locatie":
+                    do
                     {
-                        case "locatie":
-                            do
-                            {
-                                Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)\n");
-                                location = Console.ReadLine().ToUpper();
+                        Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)\n");
+                        location = Console.ReadLine().ToUpper();
 
-                            } while (!_locations.ContainsKey(location));
-                            reservation.Location = _locations[location];
-                            ShowReservation(reservation);
-                            break;
-                        case "personen":
-                            do
-                            {
-                                Console.WriteLine("Hoeveel personen? (1-16)\n");
-                                peopleInput = Console.ReadLine().ToUpper();
+                    } while (!_locations.ContainsKey(location));
+                    reservation.Location = _locations[location];
+                    ShowReservation(reservation);
+                    break;
+                case "personen":
+                    do
+                    {
+                        Console.WriteLine("Hoeveel personen? (1-16)\n");
+                        peopleInput = Console.ReadLine().ToUpper();
 
-                            } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
-                            reservation.NumberOfPeople = people;
-                            ShowReservation(reservation);
-                            break;
-                        case "datum":
-                            DateTime newdate = new DateTime(2024, ReservationSystem.GetValidMonth(), ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31), ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23), ReservationSystem.GetValidMinute("Vul een minuut-optie in (0 - 15 - 30 - 45): "), 0);
-                            reservation.Date = newdate;
-                            ShowReservation(reservation);
-                            break;
-                        case "q":
-                            changing = false;
-                            Console.WriteLine("Reservering succesvol aangepast. \n");
-                            break;
+                    } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
+                    reservation.NumberOfPeople = people;
+                    ShowReservation(reservation);
+                    break;
+                case "datum":
+                    DateTime newdate = new DateTime(2024, ReservationSystem.GetValidMonth(), ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31), ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23), ReservationSystem.GetValidMinute("Vul een minuut-optie in (0 - 15 - 30 - 45): "), 0);
+                    reservation.Date = newdate;
+                    ShowReservation(reservation);
+                    break;
+                case "q":
+                    changing = false;
+                    Console.WriteLine("Reservering succesvol aangepast. \n");
+                    break;
 
 
-                    }
+            }
 
-                }
+        }
 
 
-            
 
-        
+
+
     }
     public static void Reserve(string email)
     {
@@ -91,22 +91,6 @@ class Reservation
             }
         } while (!_locations.ContainsKey(location) && location != "Q");
 
-        /*
-        do
-        {
-            Console.WriteLine("Wat is uw e-mail? (moet '@/.' bevatten)\n(druk op Q om af te sluiten)");
-            email = Console.ReadLine().ToUpper();
-            if (email == "Q")
-            {
-                return;
-            }
-            if (email != "Q" && !ValidEmail(email))
-            {
-                Console.WriteLine("Ongeldige email, er zit geen @ of '.' in\n");
-            }
-
-        } while (email != "Q" && !ValidEmail(email));
-        */
 
         int people;
         string peopleInput;
@@ -139,7 +123,7 @@ class Reservation
 
 
         Reservation reservation = new(_locations[location], people, date, email);
-        
+
 
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
@@ -160,7 +144,7 @@ class Reservation
             }
             else { Console.WriteLine("geen geldige optie voer ja of nee in."); }
         }
-            ReservationSystem.AddReservation(reservation);
+        ReservationSystem.AddReservation(reservation);
         Console.WriteLine("\nUw reservering is toegevoegd in ons systeem.");
         Console.WriteLine("\ndruk op een knop om verder te gaan...");
         Console.ReadKey();

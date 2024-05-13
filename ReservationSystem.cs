@@ -58,6 +58,7 @@ static class ReservationSystem
     public static int GetValidMonth()
     {
         List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+        List<string> Vastmonths = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
         bool isValid = false;
         Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
         int currentMonthIndex = DateTime.Now.Month - 1;
@@ -86,14 +87,14 @@ static class ReservationSystem
             }
 
             string givenMonth = Console.ReadLine().ToLower();
-            if (months.Contains(givenMonth))
+            if (Vastmonths.Contains(givenMonth))
             {
-                for (int i = 0; i < months.Count; i++)
+                isValid = true;
+                for (int i = 0; i < Vastmonths.Count; i++)
                 {
-                    if (givenMonth == months[i])
+                    if (givenMonth == Vastmonths[i])
                     {
-                        month = (currentMonthIndex + i + 1) % 12;
-                        isValid = true;
+                        month = i + 1;
                         break;
                     }
                 }
