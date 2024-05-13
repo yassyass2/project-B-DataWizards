@@ -23,36 +23,42 @@ class Program
         User.ReadUsersFromJson("users.json");
 
         Menu inlogmenu = new Menu(new List<string>() { "Inloggen", "Registreren", "Programma afsluiten" });
+
+        Console.WriteLine("gebruik toetsenbord pijlen om door keuzemenu te navigeren");
+        Console.WriteLine("\ndruk op een knop om verder te gaan...");
+        Console.ReadKey();
+
         inlogmenu.HandleMenu();
 
         do
         {
-            /*
-            Console.WriteLine(
-@"Wat wilt u doen?
-(I) Inloggen
-(R) Registreren
-(Q) Programma afsluiten
-            ");
-            */
             string logchoice = inlogmenu.HandleMenu();
             if (logchoice == "0")
             {
+                do
+                {
                 Console.Clear();
-                Console.WriteLine("Vul uw email in:");
+                Console.WriteLine("Vul uw email in (moet '@/.' bevatten):");
                 mail = Console.ReadLine();
+                Reservation.ValidEmail(mail);
+                } while (Reservation.ValidEmail(mail) == false);
 
                 Console.WriteLine("Vul uw wachtwoord in:");
-                string password = Console.ReadLine();
+                string password = User.ReadPassword();
                 Logged = User.Login(mail, password);
             }
             else if (logchoice == "1")
             {
+                do
+                {
                 Console.Clear();
-                Console.WriteLine("vul email voor uw account in: ");
+                Console.WriteLine("vul email voor uw account in (moet '@/.' bevatten): ");
                 mail = Console.ReadLine();
+                Reservation.ValidEmail(mail);
+                } while (Reservation.ValidEmail(mail) == false);
+
                 Console.WriteLine("kies een wachtwoord: ");
-                string pass = Console.ReadLine();
+                string pass = User.ReadPassword();
 
                 User._users.Add(new User(mail, pass));
                 //User.WriteUserToJson("users.json", new User(mail, pass));
