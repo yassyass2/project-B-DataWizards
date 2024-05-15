@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+//using System.Xml;
+using Newtonsoft.Json;
 
 class Reservation
 {
@@ -125,6 +127,7 @@ class Reservation
         Reservation reservation = new(_locations[location], people, date, email);
 
 
+        Reservation.WriteReservationToJSON("Reservation.json", reservation);
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
         ShowReservation(reservation);
@@ -157,5 +160,10 @@ class Reservation
     {
         Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+    }
+    public static void WriteReservationToJSON(string path, Reservation reservation)
+    {
+        string json = JsonConvert.SerializeObject(reservation, Formatting.Indented);
+        File.WriteAllText(path, json);
     }
 }
