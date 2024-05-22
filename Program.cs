@@ -18,7 +18,7 @@ class Program
             ");
 
         string mail = "";
-        Console.WriteLine("Welkom bij NY Place");
+        Console.WriteLine("¤Welkom bij NY Place¤");
         bool Logged = false;
         User.ReadUsersFromJson("users.json");
 
@@ -37,10 +37,10 @@ class Program
             {
                 do
                 {
-                Console.Clear();
-                Console.WriteLine("Vul uw email in (moet '@/.' bevatten):");
-                mail = Console.ReadLine();
-                Reservation.ValidEmail(mail);
+                    Console.Clear();
+                    Console.WriteLine("Vul uw email in (moet '@/.' bevatten):");
+                    mail = Console.ReadLine();
+                    Reservation.ValidEmail(mail);
                 } while (Reservation.ValidEmail(mail) == false);
 
                 Console.WriteLine("Vul uw wachtwoord in:");
@@ -51,10 +51,10 @@ class Program
             {
                 do
                 {
-                Console.Clear();
-                Console.WriteLine("vul email voor uw account in (moet '@/.' bevatten): ");
-                mail = Console.ReadLine();
-                Reservation.ValidEmail(mail);
+                    Console.Clear();
+                    Console.WriteLine("vul email voor uw account in (moet '@/.' bevatten): ");
+                    mail = Console.ReadLine();
+                    Reservation.ValidEmail(mail);
                 } while (Reservation.ValidEmail(mail) == false);
 
                 Console.WriteLine("kies een wachtwoord: ");
