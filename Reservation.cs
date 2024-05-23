@@ -1,7 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+//using System.Xml;
+using Newtonsoft.Json;
 
 class Reservation
 {
+    public static List<Reservation> _reservations = new List<Reservation>();
     private static Dictionary<string, string> _locations = new Dictionary<string, string>
         {
             { "1", "Rotterdam" },
@@ -125,6 +128,7 @@ class Reservation
         Reservation reservation = new(_locations[location], people, date, email);
 
 
+        Reservation.WriteReservationToJSON("Reservation.json", reservation);
         Console.WriteLine("reservering succesvol aangemaakt\n");
 
         ShowReservation(reservation);
@@ -157,5 +161,22 @@ class Reservation
     {
         Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+    }
+    public static void ReadReservationFromJSON(string path)
+    {
+        if (!File.Exists(path))
+        {
+            return;
+        }
+        string json = File.ReadAllText(path);
+        foreach (ReservationFormat r in JsonConvert.DeserializeObject<List<ReservationFormat>>(json))
+        {
+            _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email));
+        }
+    }
+    public static void WriteReservationToJSON(string path, Reservation reservation)
+    {
+        string json = JsonConvert.SerializeObject(reservation, Formatting.Indented);
+        File.WriteAllText(path, json);
     }
 }
