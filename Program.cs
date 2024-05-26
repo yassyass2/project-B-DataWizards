@@ -18,9 +18,11 @@ class Program
             ");
 
         string mail = "";
+
         Console.WriteLine("¤Welkom bij NY Place¤");
         bool Logged = false;
         User.ReadUsersFromJson("users.json");
+        Reservation.ReadReservationFromJSON("Reservation.json");
 
         Menu inlogmenu = new Menu(new List<string>() { "Inloggen", "Registreren", "Programma afsluiten" });
 
@@ -102,6 +104,7 @@ class Program
                     if (choice2 == "ja")
                     {
                         User.WriteUsersToJson("users.json");
+                        Reservation.WriteReservationToJSON("Reservation.json");
                         return;
                     }
                 } while (choice2 != "ja" && choice2 != "nee");

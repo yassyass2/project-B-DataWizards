@@ -1,79 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.IO;
+
 public class MapGenerator
 {
-    private readonly char[,] map;
-    private readonly Random random;
+    public List<Table> Tables { get; private set; }
 
-    public MapGenerator(int rows, int cols)
+    public MapGenerator()
     {
-        map = new char[rows, cols];
-        random = new Random();
+        Tables = new List<Table>();
+        InitializeTables();
     }
 
-    public void GenerateMap()
+    private void InitializeTables()
     {
-        for (int i = 0; i < map.GetLength(0); i++)
-        {
-            for (int j = 0; j < map.GetLength(1); j++)
-            {
-                map[i, j] = '-';
-            }
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-            int row = random.Next(0, map.GetLength(0));
-            int col = random.Next(0, map.GetLength(1));
-            int groupWidth = random.Next(1, 3); // 1 of 2
-            int groupHeight = random.Next(0, 2) == 0 ? 2 : 4; // 2 of 4
-
-            if (IsAvailable(row, col, groupWidth, groupHeight))
-            {
-                AddGroup(row, col, groupWidth, groupHeight);
-            }
-        }
+        int id = 1;
+        for (int i = 0; i < 6; i++) Tables.Add(new Table { Id = id++, Seats = 2 });
+        for (int i = 0; i < 6; i++) Tables.Add(new Table { Id = id++, Seats = 4 });
+        for (int i = 0; i < 6; i++) Tables.Add(new Table { Id = id++, Seats = 8 });
     }
 
     public void PrintMap()
     {
-        for (int i = 0; i < map.GetLength(0); i++)
+        Console.WriteLine("Restaurant plattegrond:");
+        foreach (Table table in Tables)
         {
-            for (int j = 0; j < map.GetLength(1); j++)
-            {
-                Console.Write(map[i, j] + " ");
-            }
-            Console.WriteLine();
+            Console.WriteLine($"Tafel {table.Id} ({table.Seats} plekken) - {(table.IsOccupied ? "Bezet" : "Beschikbaar")}");
         }
     }
 
-    private bool IsAvailable(int row, int col, int groupWidth, int groupHeight)
+    public bool SelectTable(int tableId)
     {
-        if (row + groupHeight > map.GetLength(0) || col + groupWidth > map.GetLength(1))
+        Table table = Tables.FirstOrDefault(t => t.Id == tableId);
+        if (table != null && !table.IsOccupied)
         {
-            return false;
+            table.IsOccupied = true;
+            return true;
         }
-
-        for (int i = row; i < row + groupHeight; i++)
-        {
-            for (int j = col; j < col + groupWidth; j++)
-            {
-                if (map[i, j] != '-')
-                {
-                    return false;
-                }
-            }
-        }
-
-        return true;
+        return false;
     }
 
-    private void AddGroup(int row, int col, int groupWidth, int groupHeight)
+    public void SaveState(string filePath)
     {
-        for (int i = row; i < row + groupHeight; i++)
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        var json = JsonSerializer.Serialize(Tables, options);
+        File.WriteAllText(filePath, json);
+    }
+
+    public void LoadState(string filePath)
+    {
+        if (File.Exists(filePath))
         {
-            for (int j = col; j < col + groupWidth; j++)
-            {
-                map[i, j] = 'T';
-            }
+            var json = File.ReadAllText(filePath);
+            Tables = JsonSerializer.Deserialize<List<Table>>(json);
         }
     }
 }

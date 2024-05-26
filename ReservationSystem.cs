@@ -18,12 +18,11 @@ static class ReservationSystem
             Console.WriteLine("U heeft geen huidige reserveringen");
             return;
         }
-        foreach (var reservation in reservations)
+        foreach (var reservation in Reservation._reservations)
         {
             if (reservation.Email == mail)
             {
-                Console.WriteLine($"\nreservering voor: {reservation.Email}");
-                Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+                Reservation.ShowReservation(reservation);
             }
         }
     }

@@ -1,6 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 //using System.Xml;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 class Reservation
 {
@@ -15,13 +19,15 @@ class Reservation
     public int NumberOfPeople { get; set; }
     public DateTime Date { get; set; }
     public string Email { get; set; }
+    public List<int> Tafels { get; set; }
 
-    public Reservation(string location, int numberOfPeople, DateTime date, string email)
+    public Reservation(string location, int numberOfPeople, DateTime date, string email, List<int> tafels)
     {
         Location = location;
         NumberOfPeople = numberOfPeople;
         Date = date;
         Email = email;
+        Tafels = tafels;
     }
 
     public void ChangeDate(DateTime newdate) => Date = newdate;
@@ -68,16 +74,13 @@ class Reservation
                 case "q":
                     changing = false;
                     Console.WriteLine("Reservering succesvol aangepast. \n");
+                    _reservations.Add(reservation);
                     break;
 
 
             }
 
         }
-
-
-
-
 
     }
     public static void Reserve(string email)
@@ -107,9 +110,6 @@ class Reservation
             }
         } while (!int.TryParse(peopleInput, out people) || people < 1 || people > 16);
 
-        MapGenerator generator = new MapGenerator(20, 20);
-        generator.GenerateMap();
-        generator.PrintMap();
 
         int month, day, year, hour, minute;
 
@@ -124,12 +124,36 @@ class Reservation
         minute = ReservationSystem.GetValidMinute($"Vul een van de mogelijke tijden in {hour}:(00 - 15 - 30 - 45): "); // "Vul een minuut-optie in (0 - 15 - 30 - 45): "
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
 
+        MapGenerator generator = new MapGenerator();
+        generator.LoadState("tables.json");
 
-        Reservation reservation = new(_locations[location], people, date, email);
+        generator.PrintMap();
+        int tab;
+        int plek = 0;
+        List<int> tafels = new();
 
+        while (plek < people)
+        {
+            Console.WriteLine($"u heeft nu {plek} plekken, maar er zijn {people} mensen");
+            do
+            {
+                do
+                {
+                    Console.WriteLine("Welke tafel wilt u toevoegen? vul het nummer in.");
+                    int.TryParse(Console.ReadLine(), out tab);
+                } while (tab == 0);
 
-        Reservation.WriteReservationToJSON("Reservation.json", reservation);
+            } while (!generator.SelectTable(tab));
+
+            tafels.Add(tab);
+            plek += generator.Tables.FirstOrDefault(t => t.Id == tab).Seats;
+            Console.WriteLine($"Tafel {tab} succesvol gekozen");
+        }
+
+        Reservation reservation = new(_locations[location], people, date, email, tafels);
+
         Console.WriteLine("reservering succesvol aangemaakt\n");
+        generator.SaveState("tables.json");
 
         ShowReservation(reservation);
 
@@ -141,6 +165,7 @@ class Reservation
             if (answer1 == "nee")
             {
                 verified = true;
+                _reservations.Add(reservation);
             }
             else if (answer1 == "ja")
             {
@@ -161,6 +186,11 @@ class Reservation
     {
         Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+        Console.WriteLine($"Tafels: ");
+        foreach (int tableID in reservation.Tafels)
+        {
+            Console.WriteLine(tableID);
+        }
     }
     public static void ReadReservationFromJSON(string path)
     {
@@ -169,14 +199,29 @@ class Reservation
             return;
         }
         string json = File.ReadAllText(path);
-        foreach (ReservationFormat r in JsonConvert.DeserializeObject<List<ReservationFormat>>(json))
+        foreach (ReservationFormat r in JsonSerializer.Deserialize<List<ReservationFormat>>(json))
         {
-            _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email));
+            _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email, r.Tafels));
         }
     }
-    public static void WriteReservationToJSON(string path, Reservation reservation)
+    public static void WriteReservationToJSON(string path)
     {
-        string json = JsonConvert.SerializeObject(reservation, Formatting.Indented);
-        File.WriteAllText(path, json);
+        List<ReservationFormat> format = new();
+        foreach (Reservation res in _reservations)
+        {
+            format.Add(new ReservationFormat(res.Location, res.NumberOfPeople, res.Date, res.Email, res.Tafels));
+        }
+
+        try
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            var json = JsonSerializer.Serialize(format, options);
+            File.WriteAllText(path, json);
+        }
+
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving reservations to {path}: {ex.Message}");
+        }
     }
 }

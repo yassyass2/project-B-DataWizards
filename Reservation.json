@@ -1,6 +1,21 @@
-{
-  "Location": "Rotterdam",
-  "NumberOfPeople": 2,
-  "Date": "2024-06-30T20:00:00",
-  "Email": "LUCAS@FAMILIE-REEDIJK.NL"
-}
+[
+  {
+    "Location": "Location1",
+    "NumberOfPeople": 4,
+    "Date": "2024-06-01T14:00:00",
+    "Email": "email1@example.com",
+    "Tafels": [
+      1,
+      2
+    ]
+  },
+  {
+    "Location": "Location2",
+    "NumberOfPeople": 2,
+    "Date": "2024-06-02T18:00:00",
+    "Email": "email2@example.com",
+    "Tafels": [
+      3
+    ]
+  }
+]
