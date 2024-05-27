@@ -79,7 +79,7 @@ class Program
         {
             Console.WriteLine("\nWat wilt u doen?");
 
-            Menu Reserveermenu = new Menu(new List<string>() { "Reserveren", "Reserveringen bekijken", "Programma afsluiten" });
+            Menu Reserveermenu = new Menu(new List<string>() { "Reserveren", "Reserveringen bekijken/wijzigen", "Programma afsluiten" });
             string choice = Reserveermenu.HandleMenu();
             if (choice.ToUpper().Equals("0"))
             {

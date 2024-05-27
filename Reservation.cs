@@ -243,4 +243,9 @@ class Reservation
             Console.WriteLine($"Error saving reservations to {path}: {ex.Message}");
         }
     }
+
+    public static void RemoveReservation(int tafel)
+    {
+        _reservations.RemoveAll(r => r.Tafels.Contains(tafel));
+    }
 }

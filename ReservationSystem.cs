@@ -25,6 +25,38 @@ static class ReservationSystem
                 Reservation.ShowReservation(reservation);
             }
         }
+
+        Console.WriteLine("Druk op C als u een reservering wilt annuleren");
+        Console.WriteLine("Druk op iets anders om terug te gaan");
+
+        if (Console.ReadKey().Key == ConsoleKey.C)
+        {
+            while (true)
+            {
+                Console.WriteLine("vul een tafelnummer in van de reservering die u wilt annuleren: ");
+                if (int.TryParse(Console.ReadLine(), out int tableNumber))
+                {
+                    Reservation.RemoveReservation(tableNumber);
+                    MapGenerator
+
+                    Console.WriteLine("bijgewerkte reserveringen:");
+
+                    if (Reservation._reservations.Count == 0)
+                    {
+                        Console.WriteLine("U heeft geen huidige reserveringen");
+                        return;
+                    }
+                    foreach (var reservation in Reservation._reservations)
+                    {
+                        if (reservation.Email == mail)
+                        {
+                            Reservation.ShowReservation(reservation);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     public static int GetValidDate(string prompt, int min, int max)
