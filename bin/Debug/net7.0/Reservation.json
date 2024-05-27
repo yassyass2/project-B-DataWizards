@@ -1,20 +1,11 @@
 [
   {
     "Location": "Rotterdam",
-    "NumberOfPeople": 1,
-    "Date": "2024-05-10T20:30:00",
+    "NumberOfPeople": 2,
+    "Date": "2024-06-20T20:00:00",
     "Email": "yass@.",
     "Tafels": [
       1
-    ]
-  },
-  {
-    "Location": "Rotterdam",
-    "NumberOfPeople": 1,
-    "Date": "2024-05-20T20:30:00",
-    "Email": "yass@.",
-    "Tafels": [
-      2
     ]
   }
 ]

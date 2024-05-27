@@ -89,7 +89,7 @@ class Program
             }
             else if (choice.ToUpper().Equals("1"))
             {
-                Console.WriteLine("");
+                Console.WriteLine($"uw mail: {mail}");
                 ReservationSystem.ShowReservations(mail);
                 Console.WriteLine("\ndruk op een knop om verder te gaan...");
                 Console.ReadKey();

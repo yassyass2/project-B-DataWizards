@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("project-B-DataWizards")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+863a989cc14b35ce2bb6073661977beaaa8dac92")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+142b5fb8976374340bbbc43bfa0c0de1c65ecd6f")]
 [assembly: System.Reflection.AssemblyProductAttribute("project-B-DataWizards")]
 [assembly: System.Reflection.AssemblyTitleAttribute("project-B-DataWizards")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

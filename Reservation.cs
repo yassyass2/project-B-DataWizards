@@ -1,14 +1,14 @@
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 //using System.Xml;
 //using Newtonsoft.Json;
 
 class Reservation
 {
-    public static List<Reservation> _reservations = new List<Reservation>();
+    public static List<Reservation> _reservations = new();
     private static Dictionary<string, string> _locations = new Dictionary<string, string>
         {
             { "1", "Rotterdam" },
@@ -194,18 +194,35 @@ class Reservation
     }
     public static void ReadReservationFromJSON(string path)
     {
-        if (!File.Exists(path))
+        try
         {
-            return;
+            if (File.Exists(path))
+            {
+                var json = File.ReadAllText(path);
+                var reservations = JsonConvert.DeserializeObject<List<ReservationFormat>>(json);
+
+                foreach (ReservationFormat r in reservations)
+                {
+                    _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email, r.Tafels));
+                }
+            }
+            else
+            {
+                Console.WriteLine($"File {path} does not exist. Creating a new list.");
+            }
         }
-        string json = File.ReadAllText(path);
-        foreach (ReservationFormat r in JsonSerializer.Deserialize<List<ReservationFormat>>(json))
+        catch (Exception ex)
         {
-            _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email, r.Tafels));
+            Console.WriteLine($"Error loading reservations from {path}: {ex.Message}");
         }
     }
     public static void WriteReservationToJSON(string path)
     {
+        if (_reservations == null || _reservations.Count == 0)
+        {
+            Console.WriteLine("No reservations to save.");
+            return;
+        }
         List<ReservationFormat> format = new();
         foreach (Reservation res in _reservations)
         {
@@ -214,11 +231,13 @@ class Reservation
 
         try
         {
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            var json = JsonSerializer.Serialize(format, options);
-            File.WriteAllText(path, json);
+            var json = JsonConvert.SerializeObject(format, Formatting.Indented);
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.Write(json);
+            }
+            Console.WriteLine($"Reservations saved to {path}");
         }
-
         catch (Exception ex)
         {
             Console.WriteLine($"Error saving reservations to {path}: {ex.Message}");

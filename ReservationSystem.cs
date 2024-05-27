@@ -13,7 +13,7 @@ static class ReservationSystem
     public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
-        if (reservations.Count == 0)
+        if (Reservation._reservations.Count == 0)
         {
             Console.WriteLine("U heeft geen huidige reserveringen");
             return;

@@ -11,10 +11,10 @@ class ReservationFormat
     public ReservationFormat()
     {
     }
-    public ReservationFormat(string loc, int nump, DateTime date, string mail, List<int> tafels)
+    public ReservationFormat(string location, int numberofpeople, DateTime date, string mail, List<int> tafels)
     {
-        Location = loc;
-        NumberOfPeople = nump;
+        Location = location;
+        NumberOfPeople = numberofpeople;
         Date = date;
         Email = mail;
         Tafels = tafels;
