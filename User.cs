@@ -59,7 +59,7 @@ public class User
         do
         {
             key = Console.ReadKey(true);
-            if (key.Key != ConsoleKey.Enter)
+            if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Backspace)
             {
                 password += key.KeyChar;
                 Console.Write("*");
