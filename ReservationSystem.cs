@@ -37,7 +37,6 @@ static class ReservationSystem
                 if (int.TryParse(Console.ReadLine(), out int tableNumber))
                 {
                     Reservation.RemoveReservation(tableNumber);
-                    MapGenerator
 
                     Console.WriteLine("bijgewerkte reserveringen:");
 
