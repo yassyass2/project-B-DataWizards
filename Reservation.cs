@@ -227,7 +227,6 @@ class Reservation
             {
                 writer.Write(json);
             }
-            Console.WriteLine($"Reservations saved to {path}");
         }
         catch (Exception ex)
         {
