@@ -10,8 +10,6 @@ public class User
     {
         Email = email;
         Password = pass;
-        _users.Add(this);
-
     }
 
     public static bool Login(string mail, string pass)

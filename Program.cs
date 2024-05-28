@@ -63,7 +63,6 @@ class Program
                 string pass = User.ReadPassword();
 
                 User._users.Add(new User(mail, pass));
-                //User.WriteUserToJson("users.json", new User(mail, pass));
                 Console.WriteLine("geregistreerd.\n");
 
                 Logged = User.Login(mail, pass);
