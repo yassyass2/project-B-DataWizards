@@ -206,10 +206,6 @@ class Reservation
                     _reservations.Add(new Reservation(r.Location, r.NumberOfPeople, r.Date, r.Email, r.Tafels));
                 }
             }
-            else
-            {
-                Console.WriteLine($"File {path} does not exist. Creating a new list.");
-            }
         }
         catch (Exception ex)
         {
@@ -218,11 +214,6 @@ class Reservation
     }
     public static void WriteReservationToJSON(string path)
     {
-        if (_reservations == null || _reservations.Count == 0)
-        {
-            Console.WriteLine("No reservations to save.");
-            return;
-        }
         List<ReservationFormat> format = new();
         foreach (Reservation res in _reservations)
         {
