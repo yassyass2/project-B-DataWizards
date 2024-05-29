@@ -10,8 +10,6 @@ public class User
     {
         Email = email;
         Password = pass;
-        _users.Add(this);
-
     }
 
     public static bool Login(string mail, string pass)
@@ -59,7 +57,7 @@ public class User
         do
         {
             key = Console.ReadKey(true);
-            if (key.Key != ConsoleKey.Enter)
+            if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Backspace)
             {
                 password += key.KeyChar;
                 Console.Write("*");

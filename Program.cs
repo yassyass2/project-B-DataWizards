@@ -18,9 +18,11 @@ class Program
             ");
 
         string mail = "";
+
         Console.WriteLine("¤Welkom bij NY Place¤");
         bool Logged = false;
         User.ReadUsersFromJson("users.json");
+        Reservation.ReadReservationFromJSON("Reservation.json");
 
         Menu inlogmenu = new Menu(new List<string>() { "Inloggen", "Registreren", "Programma afsluiten" });
 
@@ -45,7 +47,8 @@ class Program
 
                 Console.WriteLine("Vul uw wachtwoord in:");
                 string password = User.ReadPassword();
-                Logged = User.Login(mail, password);
+                string Hashed = PasswordHasher.HashPassword(password);
+                Logged = User.Login(mail, Hashed);
             }
             else if (logchoice == "1")
             {
@@ -59,12 +62,12 @@ class Program
 
                 Console.WriteLine("kies een wachtwoord: ");
                 string pass = User.ReadPassword();
+                string Hashed = PasswordHasher.HashPassword(pass);
 
-                User._users.Add(new User(mail, pass));
-                //User.WriteUserToJson("users.json", new User(mail, pass));
+                User._users.Add(new User(mail, Hashed));
                 Console.WriteLine("geregistreerd.\n");
 
-                Logged = User.Login(mail, pass);
+                Logged = User.Login(mail, Hashed);
             }
             else if (logchoice.ToUpper() == "2" || logchoice.ToUpper() == "Q")
             {
@@ -77,7 +80,7 @@ class Program
         {
             Console.WriteLine("\nWat wilt u doen?");
 
-            Menu Reserveermenu = new Menu(new List<string>() { "Reserveren", "Reserveringen bekijken", "Programma afsluiten" });
+            Menu Reserveermenu = new Menu(new List<string>() { "Reserveren", "Reserveringen bekijken/wijzigen", "Programma afsluiten" });
             string choice = Reserveermenu.HandleMenu();
             if (choice.ToUpper().Equals("0"))
             {
@@ -87,7 +90,7 @@ class Program
             }
             else if (choice.ToUpper().Equals("1"))
             {
-                Console.WriteLine("");
+                Console.WriteLine($"uw mail: {mail}");
                 ReservationSystem.ShowReservations(mail);
                 Console.WriteLine("\ndruk op een knop om verder te gaan...");
                 Console.ReadKey();
@@ -102,6 +105,7 @@ class Program
                     if (choice2 == "ja")
                     {
                         User.WriteUsersToJson("users.json");
+                        Reservation.WriteReservationToJSON("Reservation.json");
                         return;
                     }
                 } while (choice2 != "ja" && choice2 != "nee");

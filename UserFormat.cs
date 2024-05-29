@@ -1,3 +1,4 @@
+[Serializable]
 class UserFormat
 {
     public string email { get; set; }

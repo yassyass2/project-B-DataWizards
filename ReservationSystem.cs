@@ -13,17 +13,47 @@ static class ReservationSystem
     public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
-        if (reservations.Count == 0)
+        if (Reservation._reservations.Count == 0)
         {
             Console.WriteLine("U heeft geen huidige reserveringen");
             return;
         }
-        foreach (var reservation in reservations)
+        foreach (var reservation in Reservation._reservations)
         {
             if (reservation.Email == mail)
             {
-                Console.WriteLine($"\nreservering voor: {reservation.Email}");
-                Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
+                Reservation.ShowReservation(reservation);
+            }
+        }
+
+        Console.WriteLine("Druk op C als u een reservering wilt annuleren");
+        Console.WriteLine("Druk op iets anders om terug te gaan");
+
+        if (Console.ReadKey().Key == ConsoleKey.C)
+        {
+            while (true)
+            {
+                Console.WriteLine("vul een tafelnummer in van de reservering die u wilt annuleren: ");
+                if (int.TryParse(Console.ReadLine(), out int tableNumber))
+                {
+                    Reservation.RemoveReservation(tableNumber);
+
+                    Console.WriteLine("bijgewerkte reserveringen:");
+
+                    if (Reservation._reservations.Count == 0)
+                    {
+                        Console.WriteLine("U heeft geen huidige reserveringen");
+                        return;
+                    }
+                    foreach (var reservation in Reservation._reservations)
+                    {
+                        if (reservation.Email == mail)
+                        {
+                            Reservation.ShowReservation(reservation);
+                        }
+                    }
+                    break;
+                }
             }
         }
     }
