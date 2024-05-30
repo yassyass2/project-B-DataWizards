@@ -125,28 +125,9 @@ class Reservation
         MapGenerator generator = new MapGenerator();
         generator.LoadState("tables.json");
 
-        generator.PrintMap();
-        int tab;
         int plek = 0;
-        List<int> tafels = new();
 
-        while (plek < people)
-        {
-            Console.WriteLine($"u heeft nu {plek} plekken, maar er zijn {people} mensen");
-            do
-            {
-                do
-                {
-                    Console.WriteLine("Welke tafel wilt u toevoegen? vul het nummer in.");
-                    int.TryParse(Console.ReadLine(), out tab);
-                } while (tab == 0);
-
-            } while (!generator.SelectTable(tab));
-
-            tafels.Add(tab);
-            plek += generator.Tables.FirstOrDefault(t => t.Id == tab).Seats;
-            Console.WriteLine($"Tafel {tab} succesvol gekozen");
-        }
+        List<int> tafels = generator.HandleMap(people, plek);
 
         Reservation reservation = new(_locations[location], people, date, email, tafels);
 
