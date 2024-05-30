@@ -5,6 +5,7 @@ class Program
 {
     public static void Main()
     {
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Clear();
         Console.WriteLine(@"
          /$$   /$$ /$$     /$$       /$$$$$$$  /$$        /$$$$$$   /$$$$$$  /$$$$$$$$
