@@ -105,6 +105,9 @@ public class MapGenerator
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Rood: Bezette tafels");
 
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("#: Stoelen");
+
         Console.ResetColor();
 
         Console.WriteLine("Vul het nummer in van de tafel die u wil selecteren: ");
