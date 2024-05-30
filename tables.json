@@ -27,7 +27,7 @@
   {
     "Id": 6,
     "Seats": 2,
-    "IsOccupied": false
+    "IsOccupied": true
   },
   {
     "Id": 7,

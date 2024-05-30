@@ -29,12 +29,10 @@ class Reservation
         Email = email;
         Tafels = tafels;
     }
-
     public void ChangeDate(DateTime newdate) => Date = newdate;
     public void ChangePeople(int AmountOfPeople) => NumberOfPeople = AmountOfPeople;
     public static void ChangeReservation(Reservation reservation)
     {
-
         int people;
         string location, peopleInput;
 
