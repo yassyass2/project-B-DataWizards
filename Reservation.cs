@@ -123,7 +123,7 @@ class Reservation
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
 
         MapGenerator generator = new MapGenerator();
-        generator.LoadState("tables.json");
+        //generator.LoadState("tables.json");
 
         int plek = 0;
 
