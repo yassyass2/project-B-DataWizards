@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "Location": "Rotterdam",
+    "NumberOfPeople": 4,
+    "Date": "2024-06-06T19:00:00",
+    "Email": "Tracy@familie-reedijk.nl",
+    "Tafels": [
+      19,
+      20
+    ]
+  }
+]
