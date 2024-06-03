@@ -65,7 +65,8 @@ class Reservation
                     ShowReservation(reservation);
                     break;
                 case "datum":
-                    DateTime newdate = new DateTime(2024, ReservationSystem.GetValidMonth(), ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31), ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23), ReservationSystem.GetValidMinute("Vul een minuut-optie in (0 - 15 - 30 - 45): "), 0);
+                    var validDate = ReservationSystem.GetValidDayAndMonth();
+                    DateTime newdate = new DateTime(validDate.year, validDate.month, validDate.day, ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23), ReservationSystem.GetValidMinute("Vul een minuut-optie in (0 - 15 - 30 - 45): "), 0);
                     reservation.Date = newdate;
                     ShowReservation(reservation);
                     break;
@@ -83,10 +84,11 @@ class Reservation
     }
     public static void Reserve(string email)
     {
+        Console.WriteLine("U kunt na het invullen van alle gegevens de gegevens nog aanpassen!");
         string location;
         do
         {
-            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den haag)\n(druk op Q om af te sluiten)");
+            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den Haag)\n(Druk op Q om af te sluiten)");
             location = Console.ReadLine().ToUpper();
             if (location == "Q")
             {
@@ -111,11 +113,13 @@ class Reservation
 
         int month, day, year, hour, minute;
 
-        month = ReservationSystem.GetValidMonth();
+        var validDate = ReservationSystem.GetValidDayAndMonth();
 
-        day = ReservationSystem.GetValidDate("Vul een dag in (1-31): ", 1, 31);
+        month = validDate.month;
 
-        year = 2024;
+        day = validDate.day;
+
+        year = validDate.year;
 
         hour = ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23);
 
@@ -131,7 +135,7 @@ class Reservation
 
         Reservation reservation = new(_locations[location], people, date, email, tafels);
 
-        Console.WriteLine("reservering succesvol aangemaakt\n");
+        Console.WriteLine("Reservering succesvol aangemaakt\n");
         generator.SaveState("tables.json");
 
         ShowReservation(reservation);
@@ -150,11 +154,11 @@ class Reservation
             {
                 ChangeReservation(reservation);
             }
-            else { Console.WriteLine("geen geldige optie voer ja of nee in."); }
+            else { Console.WriteLine("Geen geldige optie voer ja of nee in."); }
         }
         ReservationSystem.AddReservation(reservation);
         Console.WriteLine("\nUw reservering is toegevoegd in ons systeem.");
-        Console.WriteLine("\ndruk op een knop om verder te gaan...");
+        Console.WriteLine("\nDruk op een knop om verder te gaan...");
         Console.ReadKey();
     }
     public static bool ValidEmail(string email)
@@ -163,7 +167,7 @@ class Reservation
     }
     public static void ShowReservation(Reservation reservation)
     {
-        Console.WriteLine($"\nreservering voor: {reservation.Email.ToLower()}");
+        Console.WriteLine($"\nReservering voor: {reservation.Email.ToLower()}");
         Console.WriteLine($"Locatie: {reservation.Location}, personen: {reservation.NumberOfPeople}, Datum: {reservation.Date}\n");
         Console.WriteLine($"Tafels: ");
         foreach (int tableID in reservation.Tafels)
