@@ -90,7 +90,7 @@ class Reservation
         string location;
         do
         {
-            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den Haag)\n(Druk op Q om af te sluiten)");
+            Console.WriteLine("Welke locatie? (1.Rotterdam/2.Roermond/3.Den Haag), (Voer 1, 2 of 3 in.)\n(Druk op Q om af te sluiten)");
             location = Console.ReadLine().ToUpper();
             if (location == "Q")
             {
