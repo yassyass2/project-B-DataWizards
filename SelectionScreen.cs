@@ -1,6 +1,6 @@
 public static class SelectionScreen
 {
-    public static void Start() 
+    public static void Start()
     {
         PrivateStart();
     }

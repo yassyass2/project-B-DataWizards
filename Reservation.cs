@@ -220,5 +220,6 @@ class Reservation
     public static void RemoveReservation(int tafel)
     {
         _reservations.RemoveAll(r => r.Tafels.Contains(tafel));
+        WriteReservationToJSON("Reservation.json");
     }
 }
