@@ -87,65 +87,65 @@ static class ReservationSystem
 
         return input;
     }
-/*
+    /*
 
-    public static int GetValidMonth()
-    {
-        List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
-        List<string> Vastmonths = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
-        bool isValid = false;
-        Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
-        int currentMonthIndex = DateTime.Now.Month - 1;
-        int month = currentMonthIndex + 1;
-        // Maandenlijst omkeren met huidige maand eerst
-        months = months.Skip(currentMonthIndex).Concat(months.Take(currentMonthIndex)).ToList(); // skip() zorgt voor dat alle maanden voor de geselecteerde maand verwijdert worden, Take() zorgt ervoor dat alle maanden na de geselecteerde maand. 
-                                                                                                 // Concat() maakt de geselecteerde lijsten van skip() en take() weer tot 1 verzameling en ToList() zet de verzameling weer terug een een list
-        do
+        public static int GetValidMonth()
         {
-            for (int i = 0; i < months.Count; i++)
+            List<string> months = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+            List<string> Vastmonths = new List<string>() { "jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec" };
+            bool isValid = false;
+            Console.WriteLine($"Vul een maand in:\nDe huidige maand is groen gemarkeerd");
+            int currentMonthIndex = DateTime.Now.Month - 1;
+            int month = currentMonthIndex + 1;
+            // Maandenlijst omkeren met huidige maand eerst
+            months = months.Skip(currentMonthIndex).Concat(months.Take(currentMonthIndex)).ToList(); // skip() zorgt voor dat alle maanden voor de geselecteerde maand verwijdert worden, Take() zorgt ervoor dat alle maanden na de geselecteerde maand. 
+                                                                                                     // Concat() maakt de geselecteerde lijsten van skip() en take() weer tot 1 verzameling en ToList() zet de verzameling weer terug een een list
+            do
             {
-                if (i == 0) // nulste maand wordt groen gemarkeerd
+                for (int i = 0; i < months.Count; i++)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green; // Huidige maand groen markeren
-                }
-                Console.WriteLine(months[i]);
-                if (i == 0)
-                {
-                    Console.ResetColor(); // Kleur resetten na het printen van de huidige maand
-                }
-
-                if (i < months.Count - 1)
-                {
-                    Console.Write("");
-                }
-            }
-
-            string givenMonth = Console.ReadLine().ToLower();
-            if (Vastmonths.Contains(givenMonth))
-            {
-                isValid = true;
-                for (int i = 0; i < Vastmonths.Count; i++)
-                {
-                    if (givenMonth == Vastmonths[i])
+                    if (i == 0) // nulste maand wordt groen gemarkeerd
                     {
-                        month = i + 1;
-                        break;
+                        Console.ForegroundColor = ConsoleColor.Green; // Huidige maand groen markeren
+                    }
+                    Console.WriteLine(months[i]);
+                    if (i == 0)
+                    {
+                        Console.ResetColor(); // Kleur resetten na het printen van de huidige maand
+                    }
+
+                    if (i < months.Count - 1)
+                    {
+                        Console.Write("");
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine($"Ongeldige invoer. Graag een van deze opties invullen ({string.Join(", ", months)})");
-            }
-        } while (!isValid);
 
-        return month;
-    }
-*/
+                string givenMonth = Console.ReadLine().ToLower();
+                if (Vastmonths.Contains(givenMonth))
+                {
+                    isValid = true;
+                    for (int i = 0; i < Vastmonths.Count; i++)
+                    {
+                        if (givenMonth == Vastmonths[i])
+                        {
+                            month = i + 1;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Ongeldige invoer. Graag een van deze opties invullen ({string.Join(", ", months)})");
+                }
+            } while (!isValid);
+
+            return month;
+        }
+    */
 
 
 
-    public static (int year, int month,int day) GetValidDayAndMonth()
+    public static (int year, int month, int day) GetValidDayAndMonth()
     {
         Dictionary<string, int> daysInMonths = new Dictionary<string, int>
         {
@@ -168,23 +168,25 @@ static class ReservationSystem
         int year = DateTime.Now.Year;
         int selectedMonth = currentMonthIndex;
         int selectedDay = DateTime.Now.Day;
-        while (!DateSelected) {
+        while (!DateSelected)
+        {
             Console.Clear();
             Console.WriteLine("Selecteer de datum die u wilt reserveren.");
             if (selectedDay > daysInMonths[months[selectedMonth]])
             {
                 selectedDay -= daysInMonths[months[selectedMonth]];
                 if (selectedMonth == 11) { selectedMonth = 0; year++; } else { selectedMonth++; }
-                
+
             }
-            if (selectedDay < 1 )
+            if (selectedDay < 1)
             {
-                if (selectedMonth == 0) { selectedMonth = 11; year--; } else { selectedMonth--; }  
+                if (selectedMonth == 0) { selectedMonth = 11; year--; } else { selectedMonth--; }
                 selectedDay += daysInMonths[months[selectedMonth]];
-                
+
             }
-            if (selectedMonth >= currentMonthIndex && year > DateTime.Now.Year ) {
-                if(selectedMonth == currentMonthIndex && selectedDay >= DateTime.Now.Day) // als de maand hetzelfde is maar de dag gaat verder dan een jaar later, niet toestaan en terug zetten
+            if (selectedMonth >= currentMonthIndex && year > DateTime.Now.Year)
+            {
+                if (selectedMonth == currentMonthIndex && selectedDay >= DateTime.Now.Day) // als de maand hetzelfde is maar de dag gaat verder dan een jaar later, niet toestaan en terug zetten
                 {
                     selectedDay = DateTime.Now.Day - 1;
                 }
@@ -193,22 +195,24 @@ static class ReservationSystem
                     selectedMonth = currentMonthIndex;
                     selectedDay = DateTime.Now.Day - 1;
                 }
-                 
+
             }
-            if (selectedMonth <= currentMonthIndex && year <= DateTime.Now.Year) {
-                
+            if (selectedMonth <= currentMonthIndex && year <= DateTime.Now.Year)
+            {
+
                 if (selectedMonth == currentMonthIndex && selectedDay <= DateTime.Now.Day) { selectedDay = DateTime.Now.Day; } // als de maand hetzelfde is maar de dag gaat terug, niet toestaan en terug zetten
-                else if(selectedMonth < currentMonthIndex) { selectedMonth = currentMonthIndex; selectedDay = DateTime.Now.Day; } // als de maand terug in de tijd is terug naar de huidige datum zetten
+                else if (selectedMonth < currentMonthIndex) { selectedMonth = currentMonthIndex; selectedDay = DateTime.Now.Day; } // als de maand terug in de tijd is terug naar de huidige datum zetten
 
             }
             Console.WriteLine($"{months[selectedMonth]} {year} ");
-            for (int i = 0; i < daysInMonths[months[selectedMonth]]; i++) {
-                if(selectedDay == i + 1)
+            for (int i = 0; i < daysInMonths[months[selectedMonth]]; i++)
+            {
+                if (selectedDay == i + 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Console.Write($"{i + 1} ");
-                Console.ResetColor();  
+                Console.ResetColor();
 
                 if (i == 6 || i == 13 || i == 20 || i == 27) { Console.WriteLine(); }
             }
@@ -216,38 +220,30 @@ static class ReservationSystem
             switch (input.Key)
             {
                 case ConsoleKey.RightArrow:
-                   
-                    selectedDay += 1;
+
+                    selectedDay++;
                     break;
                 case ConsoleKey.LeftArrow:
-                    
-                    selectedDay -= 1;
+
+                    selectedDay--;
                     break;
                 case ConsoleKey.DownArrow:
-                   
+
                     selectedDay += 7;
                     break;
                 case ConsoleKey.UpArrow:
-                    
+
                     selectedDay -= 7;
                     break;
                 case ConsoleKey.Enter:
                     DateSelected = true; break;
             }
-            Console.WriteLine();    
+            Console.WriteLine();
         }
         return (year, selectedMonth + 1, selectedDay);
 
     }
-    
 
-        
-
-   
-   
-
-
-    
 
     public static int GetValidMinute(string prompt)
     {

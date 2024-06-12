@@ -15,6 +15,8 @@ class Reservation
             { "2", "Roermond" },
             { "3", "Den Haag" }
         };
+
+    public static Tuple<string, string, string> Locations = Tuple.Create("Rotterdam", "Roermond", "Den haag");
     public string Location { get; set; }
     public int NumberOfPeople { get; set; }
     public DateTime Date { get; set; }

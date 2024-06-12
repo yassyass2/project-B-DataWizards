@@ -1,6 +1,6 @@
-class Menu
+class Menu : AbstractMenu
 {
-    public List<string> Options;
+    public override List<string> Options { get; set; }
 
     public Menu(List<string> options)
     {
@@ -79,4 +79,9 @@ public class Option
         Name = name;
         Selected = selected;
     }
+}
+
+abstract class AbstractMenu
+{
+    public abstract List<string> Options { get; set; }
 }
