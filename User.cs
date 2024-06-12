@@ -19,10 +19,14 @@ public class User
         if (user != null)
         {
             Console.WriteLine($"login succesvol\nwelkom {user.Email}");
+            Console.WriteLine("druk op een knop om verder te gaan");
+            Console.ReadKey();
         }
         else
         {
             Console.WriteLine("ongeldige mail/wachtwoord combinatie");
+            Console.WriteLine("druk op een knop om verder te gaan");
+            Console.ReadKey();
         }
         return user != null;
     }

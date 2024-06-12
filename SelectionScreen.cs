@@ -1,6 +1,6 @@
 public static class SelectionScreen
 {
-    public static void Start() 
+    public static void Start()
     {
         PrivateStart();
     }
@@ -69,6 +69,8 @@ public static class SelectionScreen
 
                 User._users.Add(new User(mail, Hashed));
                 Console.WriteLine("geregistreerd.\n");
+                Console.WriteLine("druk op een knop om verder te gaan");
+                Console.ReadKey();
 
                 Logged = User.Login(mail, Hashed);
             }
