@@ -70,7 +70,7 @@ class Reservation
                     break;
                 case "datum":
                     var validDate = ReservationSystem.GetValidDayAndMonth();
-                    int hour = ReservationSystem.GetValidDate("Vul een uur in (19-23): ", 19, 23);
+                    int hour = ReservationSystem.GetValidDate("Vul een uur in (19:00-23:00): ", 19, 23);
                     DateTime newdate = new DateTime(validDate.year, validDate.month, validDate.day, hour, ReservationSystem.GetValidMinute($"Vul een van de mogelijke tijden in {hour}:(00 - 15 - 30 - 45): "), 0);
                     reservation.Date = newdate;
                     ShowReservation(reservation);
