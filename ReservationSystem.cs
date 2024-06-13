@@ -16,7 +16,7 @@ static class ReservationSystem
     public static void ShowReservations(string mail)
     {
         Console.WriteLine("Huidige Reserveringen:");
-        if (!Reservation._reservations.Select(r => r.Email).Contains(mail))
+        if (Reservation._reservations.Count == 0)
         {
             Console.WriteLine("U heeft geen huidige reserveringen");
             return;
@@ -36,14 +36,14 @@ static class ReservationSystem
         {
             while (true)
             {
-                Console.WriteLine(" vul een tafelnummer in van de reservering die u wilt annuleren: ");
+                Console.WriteLine("vul een tafelnummer in van de reservering die u wilt annuleren: ");
                 if (int.TryParse(Console.ReadLine(), out int tableNumber))
                 {
                     Reservation.RemoveReservation(tableNumber);
 
                     Console.WriteLine("bijgewerkte reserveringen:");
 
-                    if (!Reservation._reservations.Select(r => r.Email).Contains(mail))
+                    if (Reservation._reservations.Count == 0)
                     {
                         Console.WriteLine("U heeft geen huidige reserveringen");
                         return;
@@ -221,11 +221,11 @@ static class ReservationSystem
             {
                 case ConsoleKey.RightArrow:
 
-                    selectedDay += 1;
+                    selectedDay++;
                     break;
                 case ConsoleKey.LeftArrow:
 
-                    selectedDay -= 1;
+                    selectedDay--;
                     break;
                 case ConsoleKey.DownArrow:
 
@@ -243,14 +243,6 @@ static class ReservationSystem
         return (year, selectedMonth + 1, selectedDay);
 
     }
-
-
-
-
-
-
-
-
 
 
     public static int GetValidMinute(string prompt)

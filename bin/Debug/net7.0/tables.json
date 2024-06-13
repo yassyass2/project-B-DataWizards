@@ -1,102 +1,102 @@
 [
-    {
-        "Id": 1,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 2,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 3,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 4,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 5,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 6,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 7,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 8,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 9,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 10,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 11,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 12,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 13,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 14,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 15,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 16,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 17,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 18,
-        "Seats": 2,
-        "IsOccupied": false
-    },
-    {
-        "Id": 19,
-        "Seats": 2,
-        "IsOccupied": true
-    },
-    {
-        "Id": 20,
-        "Seats": 2,
-        "IsOccupied": true
-    }
+  {
+    "Id": 1,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 2,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 3,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 4,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 5,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 6,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 7,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 8,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 9,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 10,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 11,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 12,
+    "Seats": 2,
+    "IsOccupied": true
+  },
+  {
+    "Id": 13,
+    "Seats": 2,
+    "IsOccupied": true
+  },
+  {
+    "Id": 14,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 15,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 16,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 17,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 18,
+    "Seats": 2,
+    "IsOccupied": false
+  },
+  {
+    "Id": 19,
+    "Seats": 2,
+    "IsOccupied": true
+  },
+  {
+    "Id": 20,
+    "Seats": 2,
+    "IsOccupied": true
+  }
 ]

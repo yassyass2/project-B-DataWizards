@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-public class User
+public class User : IUser
 {
     public string Email { get; private set; }
     public string Password { get; private set; }
@@ -19,11 +19,13 @@ public class User
         if (user != null)
         {
             Console.WriteLine($"login succesvol\nwelkom {user.Email}");
+            Console.WriteLine("druk op een knop om verder te gaan");
+            Console.ReadKey();
         }
         else
         {
             Console.WriteLine("ongeldige mail/wachtwoord combinatie");
-            Console.WriteLine("klik op een knop om verder te gaan..");
+            Console.WriteLine("druk op een knop om verder te gaan");
             Console.ReadKey();
         }
         return user != null;
@@ -70,4 +72,19 @@ public class User
 
         return password;
     }
+
+    public bool Equals<T>(T other) where T : IUser
+    {
+        if (other is null)
+        {
+            return false;
+        }
+        return Email == other.Email && Password == other.Password;
+    }
+}
+
+public interface IUser
+{
+    string Email { get; }
+    string Password { get; }
 }

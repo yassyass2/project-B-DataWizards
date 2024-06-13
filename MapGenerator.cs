@@ -132,6 +132,16 @@ public class MapGenerator
         }
         return false;
     }
+    public bool SelectTable(Table table)
+    {
+        Table foundtable = Tables.FirstOrDefault(t => t == table);
+        if (foundtable != null && !foundtable.IsOccupied)
+        {
+            foundtable.IsOccupied = true;
+            return true;
+        }
+        return false;
+    }
 
     public void SaveState(string filePath)
     {

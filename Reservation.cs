@@ -15,6 +15,8 @@ class Reservation
             { "2", "Roermond" },
             { "3", "Den Haag" }
         };
+
+    public static Tuple<string, string, string> Locations = Tuple.Create("Rotterdam", "Roermond", "Den haag");
     public string Location { get; set; }
     public int NumberOfPeople { get; set; }
     public DateTime Date { get; set; }
@@ -66,7 +68,7 @@ class Reservation
                     break;
                 case "datum":
                     var validDate = ReservationSystem.GetValidDayAndMonth();
-                    int hour = ReservationSystem.GetValidDate("Vul een uur in (19-23): ", 19, 23);
+                    int hour = ReservationSystem.GetValidDate("Vul een uur in (19:00-23:00): ", 19, 23);
                     DateTime newdate = new DateTime(validDate.year, validDate.month, validDate.day, hour, ReservationSystem.GetValidMinute($"Vul een van de mogelijke tijden in {hour}:(00 - 15 - 30 - 45): "), 0);
                     reservation.Date = newdate;
                     ShowReservation(reservation);
@@ -122,7 +124,7 @@ class Reservation
 
         year = validDate.year;
 
-        hour = ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23);
+        hour = ReservationSystem.GetValidDate("Vul een tijd in (19:00-23:00): ", 19, 23);
 
         minute = ReservationSystem.GetValidMinute($"Vul een van de mogelijke tijden in {hour}:(00 - 15 - 30 - 45): "); // "Vul een minuut-optie in (0 - 15 - 30 - 45): "
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
@@ -164,7 +166,14 @@ class Reservation
     }
     public static bool ValidEmail(string email)
     {
-        return email.Contains("@") && email.Contains(".");
+        bool result = email.Contains("@") && email.Contains(".");
+        if (!result)
+        {
+            Console.WriteLine("ongeldig format mail, moet @ en . bevatten");
+            Console.WriteLine("druk op een knop om verder te gaan");
+            Console.ReadKey();
+        }
+        return result;
     }
     public static void ShowReservation(Reservation reservation)
     {
