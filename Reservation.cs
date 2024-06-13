@@ -168,7 +168,14 @@ class Reservation
     }
     public static bool ValidEmail(string email)
     {
-        return email.Contains("@") && email.Contains(".");
+        bool result = email.Contains("@") && email.Contains(".");
+        if (!result)
+        {
+            Console.WriteLine("ongeldig format mail, moet @ en . bevatten");
+            Console.WriteLine("druk op een knop om verder te gaan");
+            Console.ReadKey();
+        }
+        return result;
     }
     public static void ShowReservation(Reservation reservation)
     {
