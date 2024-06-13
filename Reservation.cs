@@ -126,7 +126,7 @@ class Reservation
 
         year = validDate.year;
 
-        hour = ReservationSystem.GetValidDate("Vul een tijd in (19-23): ", 19, 23);
+        hour = ReservationSystem.GetValidDate("Vul een tijd in (19:00-23:00): ", 19, 23);
 
         minute = ReservationSystem.GetValidMinute($"Vul een van de mogelijke tijden in {hour}:(00 - 15 - 30 - 45): "); // "Vul een minuut-optie in (0 - 15 - 30 - 45): "
         DateTime date = new DateTime(year, month, day, hour, minute, 0);
