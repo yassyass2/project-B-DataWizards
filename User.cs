@@ -23,6 +23,8 @@ public class User
         else
         {
             Console.WriteLine("ongeldige mail/wachtwoord combinatie");
+            Console.WriteLine("klik op een knop om verder te gaan..");
+            Console.ReadKey();
         }
         return user != null;
     }

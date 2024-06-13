@@ -2,7 +2,7 @@
   {
     "Id": 1,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 2,
@@ -17,17 +17,17 @@
   {
     "Id": 4,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 5,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 6,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 7,
@@ -52,22 +52,22 @@
   {
     "Id": 11,
     "Seats": 2,
-    "IsOccupied": false
+    "IsOccupied": true
   },
   {
     "Id": 12,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 13,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 14,
     "Seats": 2,
-    "IsOccupied": true
+    "IsOccupied": false
   },
   {
     "Id": 15,

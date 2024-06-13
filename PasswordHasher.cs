@@ -6,7 +6,6 @@ public static class PasswordHasher
     public static string HashPassword(string password)
     {
         SHA256 sha256 = SHA256.Create();
-
         byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
         StringBuilder builder = new();
         foreach (byte b in bytes)

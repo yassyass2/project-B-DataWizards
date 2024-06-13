@@ -43,7 +43,7 @@ static class ReservationSystem
 
                     Console.WriteLine("bijgewerkte reserveringen:");
 
-                    if (Reservation._reservations.Count == 0)
+                    if (!Reservation._reservations.Select(r => r.Email).Contains(mail))
                     {
                         Console.WriteLine("U heeft geen huidige reserveringen");
                         return;
